@@ -1,7 +1,0 @@
-__pycache__/
-.pylintrc
-.history/
-.vscode/
-*.pyc
-venv/
-.env

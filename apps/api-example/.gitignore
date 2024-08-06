@@ -1,9 +1,0 @@
-.coverage
-.env
-.history/
-.pdm-python
-.pytest_cache/
-.venv/
-.vscode/
-__pycache__/
-py_api_example.egg-info/
