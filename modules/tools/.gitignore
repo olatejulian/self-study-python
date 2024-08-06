@@ -1,0 +1,9 @@
+.vscode/
+.history/
+__pypackages__/
+__pycache__/
+.pytest_cache/
+.env
+node_modules/
+*.lock
+

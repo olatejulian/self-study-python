@@ -1,0 +1,35 @@
+version: "3"
+
+networks:
+  default:
+    name: dev-network
+
+services:
+  app:
+    env_file:
+      - ./.env
+
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        CONTAINER_USER_NAME: ${CONTAINER_USER_NAME}
+        CONTAINER_USER_PASSWORD: ${CONTAINER_USER_PASSWORD}
+        APP_PORT: ${APP_PORT}
+
+    image: ${REPO_NAME}/${APP_NAME}:${APP_VERSION}-dev
+
+    container_name: ${APP_NAME}
+
+    hostname: ${APP_NAME}
+
+    volumes:
+      - ../:/home/${CONTAINER_USER_NAME}/app/:default
+
+      - ${USER_HOME}/.ssh/:/home/${CONTAINER_USER_NAME}/.ssh/:cached
+      - ${USER_HOME}/.vimrc:/home/${CONTAINER_USER_NAME}/.vimrc:cached
+      - ${USER_HOME}/.zshrc:/home/${CONTAINER_USER_NAME}/.zshrc:cached
+      - ${USER_HOME}/.oh-my-zsh/:/home/${CONTAINER_USER_NAME}/.oh-my-zsh/:cached
+
+    ports:
+      - ${APP_PORT}:${APP_PORT}

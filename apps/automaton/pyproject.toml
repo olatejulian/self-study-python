@@ -1,0 +1,63 @@
+[project]
+name = "automaton"
+version = "0.0.0"
+description = "a program to automate boring stuffs"
+authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+dependencies = [
+    "pytube>=15.0.0",
+    "validators>=0.28.1",
+    "typer>=0.12.3",
+    "pyinstaller>=6.9.0",
+    "pypdf>=4.3.0",
+    "lagom>=2.6.0",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+disable_error_code = "import-untyped"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=24.4.2",
+    "pylint>=3.2.1",
+    "flake8>=7.0.0",
+    "mypy>=1.10.0",
+    "isort>=5.13.2",
+]
+
+[tool.pdm.scripts]
+auto = { call = "src.automaton.__main__:cli" }
+mkbin = "pyinstaller -Fyn auto src/automaton/__main__.py"
+
+[tool.pylint.basic]
+max-line-length = 79
+
+[tool.pylint.logging]
+disable = [
+    "raw-checker-failed",
+    "bad-inline-option",
+    "locally-disabled",
+    "file-ignored",
+    "suppressed-message",
+    "useless-suppression",
+    "deprecated-pragma",
+    "use-symbolic-message-instead",
+    "use-implicit-booleaness-not-comparison-to-string",
+    "use-implicit-booleaness-not-comparison-to-zero",
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "unrecognized-option",
+    "broad-except",
+]
