@@ -1,0 +1,19 @@
+[project]
+name = "self-study-python"
+version = "0.0.0"
+description = "A monorepo designed for learning and practicing Python programming"
+authors = [
+    {name = "olatejulian", email = "julian.lf.olate@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
