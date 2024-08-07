@@ -1,5 +1,5 @@
 [project]
-name = "storage_service"
+name = "storage"
 version = "0.1.0"
 description = ""
 authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
