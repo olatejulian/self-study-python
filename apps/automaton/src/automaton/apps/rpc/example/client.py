@@ -2,7 +2,7 @@ import sys
 import time
 from datetime import datetime
 
-from automaton.modules.rpc import RpcClient
+from rpc import RpcClient
 
 
 def main():

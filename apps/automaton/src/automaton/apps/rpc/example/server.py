@@ -1,7 +1,7 @@
 import sys
 
 from automaton.apps.rpc.example import handler
-from automaton.modules.rpc import RpcServer
+from rpc import RpcServer
 
 
 def main():
