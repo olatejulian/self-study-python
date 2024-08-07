@@ -23,5 +23,5 @@ distribution = true
 dev = []
 
 [tool.pdm.scripts]
-auto = { call = "src.automaton.__main__:cli" }
+auto = { call = "automaton.__main__:cli" }
 mkbin = "pyinstaller -Fyn auto src/automaton/__main__.py"

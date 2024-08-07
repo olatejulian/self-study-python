@@ -1,6 +1,6 @@
 import sys
 
-from automaton.apps.rpc.example import handler
+from automatonexample import handler
 from rpc import RpcServer
 
 
