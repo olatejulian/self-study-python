@@ -64,10 +64,9 @@ class DefaultAccountVerificationEmailSender(AccountVerificationEmailSender):
         account_email_address: EmailAddress,
         password_reset_code: VerificationCode,
     ):
-        password_reset_url = Url(
+        Url(
             f"{config.url}/{self.config.verify_path}"
             + f"?email={account_email_address.value}"
             + f"&token={password_reset_code.value}"
         )
 
-        contents = self.email_template_renderer.render_pas

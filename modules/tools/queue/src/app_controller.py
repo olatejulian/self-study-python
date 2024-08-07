@@ -10,7 +10,6 @@ Examples:
 # queue.empty()
 # queue.delete(delete_jobs=True)
 '''
-import time
 import redis
 from celery import Celery
 

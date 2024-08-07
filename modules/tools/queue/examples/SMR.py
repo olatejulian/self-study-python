@@ -172,7 +172,7 @@ async def write_mongo(collection: any, redis: any) -> None:
             try:
                 await collection.insert_many(documents)
 
-            except Exception as exception:
+            except Exception:
                 try:
                     await redis.lpush('offsets')
 

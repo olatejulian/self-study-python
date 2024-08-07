@@ -1,5 +1,5 @@
 import os
-from fpdf import FPDF, Template
+from fpdf import FPDF
 
 class PDF(FPDF):
     figure_number = 0

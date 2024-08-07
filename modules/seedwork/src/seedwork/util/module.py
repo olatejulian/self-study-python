@@ -36,7 +36,8 @@ class Module:
 
     @staticmethod
     def add(modules: list[Module]) -> Module:
-        s = lambda x, y: x + y
+        def s(x, y):
+            return x + y
 
         module = reduce(modules, s)
 

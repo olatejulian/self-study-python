@@ -14,7 +14,7 @@ from sklearn.neighbors import KNeighborsClassifier, RadiusNeighborsClassifier # 
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier  # Ensemble estimators
 
 def main():
-    models = {
+    {
         'svc': SVC(),
         'dummy': DummyClassifier(),
         'knn': KNeighborsClassifier(),
@@ -27,62 +27,6 @@ def main():
         'gradient_boosting': GradientBoostingClassifier(),
     }
 
-    static_grid = {
-        'dummy': {
-            'strategy': [
-                'stratified',
-                'most_frequent',
-                'prior',
-                'uniform',
-                'constant'
-            ]
-        },
-        'logistic_regression': {
-            'solver': ['newton-cg', 'lbfgs', 'liblinear'],
-            'penalty': ['l1', 'l2', 'elasticnet'],
-            'C': [1, 5, 10, 50, 100, 200, 250, 300, 500, 1000, 5000]
-        },
-        'knn': {
-            'n_neighbors': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30],
-            'metric': ['euclidean', 'manhattan', 'minkowski'],
-            'weights': ['uniform', 'distance']
-        },
-        'rnn': {
-            'radius': [0.1, 0.5, 1, 5, 10, 15, 20, 30, 50, 100, 500, 1000, 2000],
-            'metric': ['euclidean', 'manhattan', 'minkowski'],
-            'weights': ['uniform', 'distance']
-        },
-        'svc': {
-            'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
-            'C': [1, 2, 5, 10, 100, 200, 300, 400, 500]
-        },
-        'decision_tree': {
-            'criterion': ['gini', 'entropy'],
-            'splitter': ['random', 'best'],
-            'max_depth': [35, 40, 45, 50, 55, 60, 65, 70, 350, 400, 450, 500, 1000],
-            'min_samples_split': [0, 5, 10, 12, 14, 15],
-            'min_samples_leaf': [0, 5, 10, 25, 50, 100, 200]
-        },
-        'random_forest': {
-            'n_estimators': [10, 25, 50, 100, 200],
-            'criterion': ['gini', 'entropy'],
-            'max_depth': [5, 10, 20, 40, 50, 70, 80, 350, 400, 450, 500, 1000]
-        },
-        'gradient_boosting': {
-            'loss': ['deviance', 'exponential'],
-            'learning_rate': [0.1, 0.5, 1],
-            'n_estimators': [10, 25, 50, 100, 200]
-        },
-        'adaboost': {
-            'learning_rate': [0.1, 0.5, 1],
-            'n_estimators': [10, 25, 50, 100, 200]
-        },
-        'catboost': {
-            'n_estimators': [10, 25, 50, 100, 200],
-            'learning_rate': [0.1, 0.5, 1],
-            'max_depth': [5, 10, 20, 40, 50, 70, 80, 350, 400, 450, 500, 1000]
-        }
-    }
 
 def run(x_train, x_test, y_train, name):
 

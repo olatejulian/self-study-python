@@ -1,4 +1,3 @@
-from typing import List
 from src.repositories.interfaces.users_interface import IUserRepository
 
 class MockSession:
