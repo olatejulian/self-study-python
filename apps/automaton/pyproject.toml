@@ -24,4 +24,4 @@ dev = []
 
 [tool.pdm.scripts]
 auto = { call = "automaton.__main__:cli" }
-mkbin = "pyinstaller -Fyn auto src/automaton/__main__.py"
+mkbin = "pyinstaller -Fyn auto automaton/__main__.py"
