@@ -3,10 +3,11 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from .types import Handler, Handlers
+from ..abstracts import HandlerRegister
+from ..types import Handler, Handlers
 
 
-class HandlerRegister:
+class _HandlerRegister(HandlerRegister):
     @staticmethod
     def __pascal_to_snake(string: str) -> str:
         string = re.sub(r"(?<=[a-z0-9])([A-Z])", r"_\1", string)
@@ -29,7 +30,7 @@ class HandlerRegister:
     def handlers(self):
         return self.__handlers
 
-    def register(self, handler: Handler, name: str | None = None):
+    def register_handler(self, handler: Handler, name: str | None = None):
         handler_type = type(handler)
         handler_name = name if name else self.__type_name(handler_type)
         handler_function = handler
@@ -39,8 +40,6 @@ class HandlerRegister:
             "handler": handler_function,
             "handler_type": handler_type,
         }
-
-        print()
 
     def unregister_handler(self, handler_id: str | type[Any]):
         if isinstance(handler_id, type):
@@ -54,19 +53,19 @@ class HandlerRegister:
     ):
         if isinstance(handlers, dict):
             for name, handler in handlers.items():
-                self.register(name=name, handler=handler)
+                self.register_handler(name=name, handler=handler)
 
         elif isinstance(handlers, list):
             for item in handlers:
                 if isinstance(item, tuple):
                     name, handler = item
 
-                    self.register(handler=handler, name=name)
+                    self.register_handler(handler=handler, name=name)
 
                 else:
                     handler = item
 
-                    self.register(handler)
+                    self.register_handler(handler)
 
     def get_handler(self, handler_id: str | type[Any]):
         if isinstance(handler_id, type):

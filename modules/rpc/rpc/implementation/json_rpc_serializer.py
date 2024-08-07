@@ -1,8 +1,8 @@
 import json
 
-from .abstracts import RpcClientSerializer, RpcServerSerializer
-from .types import RpcRequestData, RpcResponseData, UTF8Bytes
-from .value_objects import RpcRequest, RpcResponse
+from ..abstracts import RpcClientSerializer, RpcServerSerializer
+from ..types import RpcRequestData, RpcResponseData, UTF8Bytes
+from ..value_objects import RpcRequest, RpcResponse
 
 
 class JsonRpcServerSerializer(RpcServerSerializer):

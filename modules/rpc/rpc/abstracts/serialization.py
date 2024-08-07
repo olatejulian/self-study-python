@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Generic
 
-from .types import Data, EncodedData, UTF8Bytes
-from .value_objects import RpcRequest, RpcResponse
+from ..types import Data, EncodedData, UTF8Bytes
+from ..value_objects import RpcRequest, RpcResponse
 
 
 class Encoder(ABC, Generic[Data, EncodedData]):

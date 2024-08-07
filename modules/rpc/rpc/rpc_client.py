@@ -1,6 +1,9 @@
 import socket
 
-from .json_rpc_serializer import JsonRpcClientSerializer, RpcClientSerializer
+from .abstracts import RpcClientSerializer
+from .implementation import (
+    JsonRpcClientSerializer,
+)
 from .value_objects import Host, Port, RpcRequest, RpcResponse
 
 

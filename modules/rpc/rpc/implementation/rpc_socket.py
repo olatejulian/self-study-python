@@ -4,10 +4,11 @@ import socket
 from multiprocessing import Process
 from typing import Callable
 
-from .value_objects import Host, Port
+from ..abstracts import RpcClientSocket, RpcSocket
+from ..value_objects import Host, Port
 
 
-class RpcClientSocket:
+class _RpcClientSocket(RpcClientSocket):
     def __init__(
         self,
         client_socket: socket.socket,
@@ -32,8 +33,9 @@ class RpcClientSocket:
         self.__client_socket.close()
 
 
-class RpcSocket:
+class _RpcSocket(RpcSocket):
     __socket: socket.socket
+    __handler: Callable[[RpcClientSocket], None]
 
     def __init__(self, host: Host, port: Port, buff_size: int = 1024):
         self.__while = True
@@ -45,14 +47,6 @@ class RpcSocket:
 
         self.__init_socket()
 
-    @property
-    def host(self):
-        return str(self.__host)
-
-    @property
-    def port(self):
-        return int(self.__port)
-
     def __init_socket(self):
         self.__socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         address = (str(self.__host), int(self.__port))
@@ -61,18 +55,29 @@ class RpcSocket:
 
         self.__socket.listen()
 
-    def run(self, handler: Callable[[RpcClientSocket], None]):
+    @property
+    def host(self):
+        return str(self.__host)
+
+    @property
+    def port(self):
+        return int(self.__port)
+
+    def set_handler(self, handler: Callable[[RpcClientSocket], None]):
+        self.__handler = handler
+
+    def run(self):
         while self.__while:
             client_socket, client_address = self.__socket.accept()
 
-            rpc_client_socket = RpcClientSocket(
+            rpc_client_socket: RpcClientSocket = _RpcClientSocket(
                 client_socket=client_socket,
                 client_address=client_address,
                 buff_size=self.__buff_size,
             )
 
             handlers_processes = Process(
-                target=handler,
+                target=self.__handler,
                 args=(rpc_client_socket,),
             )
 
