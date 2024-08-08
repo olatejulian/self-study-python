@@ -26,10 +26,14 @@ dev = [
     "-e file:///${PROJECT_ROOT}/apps/automaton",
     "-e file:///${PROJECT_ROOT}/apps/storage",
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
+    "-e file:///${PROJECT_ROOT}/modules/cqrs",
     "-e file:///${PROJECT_ROOT}/modules/rpc",
     "-e file:///${PROJECT_ROOT}/modules/seedwork",
     "-e file:///${PROJECT_ROOT}/modules/tools",
 ]
+
+[tool.pdm.scripts]
+automaton = { cmd = "pdm run -p apps/automaton", help = "Run automaton" }
 
 [tool.ruff]
 line-length = 79
