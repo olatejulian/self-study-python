@@ -1,5 +1,6 @@
 from .domain import (
     Directory,
+    DirectoryLoader,
     File,
     Template,
     TemplateFileDoesNotExistException,
@@ -13,6 +14,7 @@ from .infrastructure import (
 
 __all__ = [
     "Directory",
+    "DirectoryLoader",
     "File",
     "JsonFile",
     "JsonTemplateRepository",
