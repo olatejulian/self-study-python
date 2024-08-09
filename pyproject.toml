@@ -24,6 +24,7 @@ dev = [
     "mypy>=1.11.1",
     "-e file:///${PROJECT_ROOT}/apps/api-example",
     "-e file:///${PROJECT_ROOT}/apps/automaton",
+    "-e file:///${PROJECT_ROOT}/apps/code-generator",
     "-e file:///${PROJECT_ROOT}/apps/storage",
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
     "-e file:///${PROJECT_ROOT}/modules/cqrs",
