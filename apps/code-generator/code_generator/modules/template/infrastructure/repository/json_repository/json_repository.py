@@ -1,7 +1,11 @@
 from pathlib import Path
 from typing import Iterator
 
-from code_generator.modules.template import Template, TemplateRepository
+from code_generator.modules.template import (
+    Template,
+    TemplateDict,
+    TemplateRepository,
+)
 
 from .json_file import JsonFile
 
@@ -9,6 +13,7 @@ from .json_file import JsonFile
 class JsonTemplateRepository(TemplateRepository):
     def __init__(self, path: str):
         self.__path = path
+        self.__json_file = JsonFile[TemplateDict]()
 
     def __template_path(self, name: str) -> str:
         template_path = (Path(self.__path) / f"{name}.json").absolute()
@@ -22,12 +27,12 @@ class JsonTemplateRepository(TemplateRepository):
 
         template_dict = template.to_dict()
 
-        JsonFile.write(template_path, template_dict)
+        self.__json_file.write(template_path, template_dict)
 
     def get(self, name: str) -> Template:
         template_path = self.__template_path(name)
 
-        template_dict = JsonFile.read(template_path)
+        template_dict = self.__json_file.read(template_path)
 
         template = Template.from_dict(template_dict)
 

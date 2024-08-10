@@ -3,6 +3,7 @@ from .domain import (
     DirectoryLoader,
     File,
     Template,
+    TemplateDict,
     TemplateFileDoesNotExistException,
     TemplateRepository,
 )
@@ -19,6 +20,7 @@ __all__ = [
     "JsonFile",
     "JsonTemplateRepository",
     "Template",
+    "TemplateDict",
     "TemplateFileDoesNotExistException",
     "TemplateRepository",
     "YamlTemplateRepository",
