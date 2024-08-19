@@ -2,19 +2,21 @@ from typing import Self, TypedDict
 
 from pydantic import BaseModel, Field
 
-from .value_objects import Directory
+from .value_objects import Directory, TemplateMetadata
 
 
 class TemplateDict(TypedDict):
     name: str
     description: str
     main_directory: Directory
+    metadata: TemplateMetadata
 
 
 class TemplateProps(BaseModel):
     name: str = Field(frozen=True)
     description: str
     main_directory: Directory
+    metadata: TemplateMetadata
 
 
 class Template:

@@ -8,8 +8,8 @@ class FSDirectoryLoader(DirectoryLoader):
     def load(cls, dir_path: str) -> Directory:
         path = Path(dir_path).resolve().absolute()
 
-        if not path.exists():
-            raise FileNotFoundError
+        if not path.exists() or not path.is_dir():
+            raise ValueError
 
         return Directory(
             name=path.name,

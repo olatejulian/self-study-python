@@ -23,6 +23,7 @@ class TemplateService:
             "main_directory": self.__directory_loader.load(
                 dto.sample_directory_path
             ),
+            "metadata": {"sample_directory_path": dto.sample_directory_path},
         }
 
         template = Template.from_dict(template_dict)
@@ -30,3 +31,6 @@ class TemplateService:
         self.__template_repository.save(template)
 
         return template
+
+    def get_template_by_name(self, name: str) -> Template:
+        return self.__template_repository.get(name)
