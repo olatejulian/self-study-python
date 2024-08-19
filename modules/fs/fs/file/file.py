@@ -79,6 +79,9 @@ class File:
             case _:
                 raise ValueError
 
+    def touch(self) -> None:
+        self.__path.touch(exist_ok=True)
+
     def write(self, data: str | bytes) -> None:
         if isinstance(data, str):
             self.__path.write_text(data)
