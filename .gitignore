@@ -35,6 +35,7 @@
 .scrapy
 .spyderproject
 .spyproject
+.tool-versions
 .tox/
 .venv
 .webassets-cache
