@@ -1,7 +1,7 @@
 [project]
 name = "automaton"
 version = "0.0.0"
-description = "a program to automate boring stuffs"
+description = "An app to automate boring stuffs"
 authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
 dependencies = [
     "pytube>=15.0.0",
