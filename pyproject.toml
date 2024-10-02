@@ -1,16 +1,16 @@
-[project]
-name = "self-study-python"
-version = "0.0.0"
-description = "A monorepo designed for learning and practicing Python programming"
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
-dependencies = []
-requires-python = "<3.13,>=3.12"
-readme = "README.md"
-license = { text = "MIT" }
-
 [build-system]
-requires = ["pdm-backend"]
 build-backend = "pdm.backend"
+requires = ["pdm-backend"]
+
+[project]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
+dependencies = []
+description = "A monorepo designed for learning and practicing Python programming"
+license = { text = "MIT" }
+name = "self-study-python"
+readme = "README.md"
+requires-python = "<3.13,>=3.12"
+version = "0.0.0"
 
 [tool.mypy]
 disable_error_code = "import-untyped"
@@ -20,11 +20,10 @@ distribution = true
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "ruff>=0.5.6",
-    "mypy>=1.11.1",
     "-e file:///${PROJECT_ROOT}/apps/api-example",
     "-e file:///${PROJECT_ROOT}/apps/automaton",
     "-e file:///${PROJECT_ROOT}/apps/code-generator",
+    "-e file:///${PROJECT_ROOT}/apps/ltx",
     "-e file:///${PROJECT_ROOT}/apps/storage",
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
     "-e file:///${PROJECT_ROOT}/modules/chronos",
@@ -33,6 +32,9 @@ dev = [
     "-e file:///${PROJECT_ROOT}/modules/rpc",
     "-e file:///${PROJECT_ROOT}/modules/seedwork",
     "-e file:///${PROJECT_ROOT}/modules/tools",
+    "mypy>=1.11.1",
+    "ruff>=0.5.6",
+    "toml-sort>=0.23.1",
 ]
 
 [tool.pdm.scripts]
@@ -43,3 +45,6 @@ line-length = 79
 
 [tool.ruff.lint]
 extend-select = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F403"]

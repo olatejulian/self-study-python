@@ -1,0 +1,18 @@
+{
+    "args": [
+        "-bibtex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-pdf",
+        "-f",
+        "-gg",
+        "-cd"
+    ],
+    "dirs": {
+        "build": "build",
+        "output": "dist",
+        "resources": "resources/tex",
+        "root": "test/tex",
+        "source": "src"
+    }
+}

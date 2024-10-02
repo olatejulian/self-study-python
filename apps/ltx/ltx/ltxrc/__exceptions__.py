@@ -1,0 +1,2 @@
+class LtxrcSchemaException(Exception):
+    pass
