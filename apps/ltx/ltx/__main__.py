@@ -1,4 +1,4 @@
-from .ltx_cli import cli
+from ltx.ltx_cli import cli
 
 
 def main():
