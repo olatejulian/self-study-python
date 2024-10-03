@@ -2,13 +2,11 @@
 name = "chronos"
 version = "0.0.0"
 description = "a module to handle date and time events"
-authors = [
-    {name = "olatejulian", email = "julian.lf.olate@gmail.com"},
-]
+authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
 dependencies = []
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 [build-system]
 requires = ["pdm-backend"]

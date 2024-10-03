@@ -2,27 +2,19 @@
 name = "python-seedwork"
 version = "0.1.0"
 description = "Clean arch and design patterns prototypes"
-authors = [
-    {name = "olatejulian", email = "julian.lf.olate@gmail"},
-]
-dependencies = [
-    "pydantic>=1.10.2",
-    "python-dotenv>=0.21.0",
-    "pendulum>=2.1.2",
-]
-requires-python = ">=3.12"
+authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail" }]
+dependencies = ["pydantic>=1.10.2", "python-dotenv>=0.21.0", "pendulum>=2.1.2"]
+requires-python = ">=3.12,<3.13"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 [project.optional-dependencies]
 
 [tool.pdm]
 [tool.pdm.dev-dependencies]
-dev = [
-    "pytest>=7.2.0",
-]
+dev = ["pytest>=7.2.0"]
 
 [tool.pdm.scripts]
-test = {shell = "clear; pytest"}
+test = { shell = "clear; pytest" }
 
 
 [build-system]
