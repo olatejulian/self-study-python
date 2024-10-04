@@ -5,16 +5,24 @@ from dependency_injector.providers import Resource, Singleton
 from dependency_injector.wiring import Provide, inject
 
 from .ltx_service import LtxService
-from .ltxrc import LtxrcJsonLoader
+from .ltxrc import JsonLtxrcParser
 from .utils.process_runner import ProcessRunner
 
 
-class LtxContainer(DeclarativeContainer):
-    ltx_config = Resource(lambda: LtxrcJsonLoader().load())
+def GetLtxConfig():
+    ltxrc_parser = JsonLtxrcParser()
 
+    ltx_config = ltxrc_parser.get_configuration()
+
+    return ltx_config
+
+
+class LtxContainer(DeclarativeContainer):
     logger = logging.getLogger(__name__)
 
     process_runner = Singleton(ProcessRunner, logger=logger)
+
+    ltx_config = Resource(GetLtxConfig)
 
     ltx_service = Singleton(
         LtxService,

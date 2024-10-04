@@ -2,14 +2,14 @@ import logging
 
 from .ltx_config import LtxConfig
 from .ltx_service import LtxService
-from .ltxrc import LtxrcJsonLoader
+from .ltxrc import JsonLtxrcParser
 from .utils import ProcessRunner
 
 
 def LtxServiceFactory() -> LtxService:
-    ltxrc_parser = LtxrcJsonLoader()
+    ltxrc_parser = JsonLtxrcParser()
 
-    ltxrc = ltxrc_parser.load()
+    ltxrc = ltxrc_parser.get_configuration()
 
     ltx_config = LtxConfig(
         dirs=ltxrc["dirs"],

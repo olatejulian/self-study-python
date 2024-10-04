@@ -5,11 +5,11 @@ from pydantic import TypeAdapter
 from ..utils import PathResolveAbsolute
 from .__exceptions__ import LtxrcSchemaException
 from .__types__ import LtxrcDict
-from .ltxrc_abc import Ltxrc
+from .ltxrc_abc import LtxrcParser
 
 
-class LtxrcJsonLoader(Ltxrc):
-    def load(self) -> LtxrcDict:
+class JsonLtxrcParser(LtxrcParser):
+    def get_configuration(self) -> LtxrcDict:
         path = Path(".")
 
         LTXRC_FILE_NAME = ".ltxrc.json"

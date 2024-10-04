@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from .__types__ import LtxrcDict
 
 
-class Ltxrc(ABC):
+class LtxrcParser(ABC):
     @abstractmethod
-    def load(self) -> LtxrcDict:
+    def get_configuration(self) -> LtxrcDict:
         raise NotImplementedError
