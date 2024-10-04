@@ -1,5 +1,5 @@
 {
-    "args": [
+    "arguments": [
         "-bibtex",
         "-synctex=1",
         "-interaction=nonstopmode",
@@ -8,7 +8,7 @@
         "-gg",
         "-cd"
     ],
-    "dirs": {
+    "directories": {
         "build": "build",
         "output": "dist",
         "resources": "resources/tex",
