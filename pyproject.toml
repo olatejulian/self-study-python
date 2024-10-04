@@ -28,6 +28,7 @@ dev = [
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
     "-e file:///${PROJECT_ROOT}/modules/chronos",
     "-e file:///${PROJECT_ROOT}/modules/cqrs",
+    "-e file:///${PROJECT_ROOT}/modules/decorar",
     "-e file:///${PROJECT_ROOT}/modules/fs",
     "-e file:///${PROJECT_ROOT}/modules/rpc",
     "-e file:///${PROJECT_ROOT}/modules/seedwork",
@@ -38,8 +39,11 @@ dev = [
 ]
 
 [tool.pdm.scripts]
-automaton = { cmd = "cd apps/automaton;pdm {args}; cd ../../", help = "Run PDM inside automaton app." }
+automaton = { shell = "cd apps/automaton;pdm {args}; cd ../../", help = "Run PDM inside automaton app." }
+
 ltx = { help = "Run PDM inside ltx app.", shell = "cd apps/ltx;pdm {args}; cd ../../" }
+
+decorar = { help = "Run PDM inside decorar module.", shell = "cd modules/decorar;pdm {args}; cd ../../" }
 
 [tool.ruff]
 line-length = 79
