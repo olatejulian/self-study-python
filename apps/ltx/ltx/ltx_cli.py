@@ -1,38 +1,16 @@
-from rich.console import Console
 from typer import Typer
 
-from .__exceptions__ import (
-    LtxConfigCannotMakeDirectoryException,
-    LtxConfigDidNotMakeDirectoriesException,
-)
-from .ltx_service_factory import LtxServiceFactory
-from .ltxrc import LtxrcSchemaException
+from .ltx_container import GetLtxService
+
+ltx_cli = Typer(name="ltx")
 
 
-def cli() -> Typer:
-    __cli = Typer(name="ltx")
+@ltx_cli.command()
+def ltx(
+    file_name: str,
+):
+    ltx_service = GetLtxService()
 
-    console = Console(stderr=True)
+    ltx_service.post_init()
 
-    service = LtxServiceFactory()
-
-    def build(file_name: str) -> None:
-        try:
-            service.post_init()
-
-        except LtxConfigCannotMakeDirectoryException as e:
-            console.print(e)
-
-        except LtxConfigDidNotMakeDirectoriesException as e:
-            console.print(e)
-
-        except LtxrcSchemaException as e:
-            console.print(e)
-
-        else:
-            service.latexmk(file_name)
-
-        finally:
-            __cli.command("build")(build)
-
-    return __cli()
+    ltx_service.latexmk(file_name)

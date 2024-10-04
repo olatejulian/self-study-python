@@ -4,7 +4,11 @@ requires = ["pdm-backend"]
 
 [project]
 authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
-dependencies = ["typer>=0.12.5", "pydantic>=2.9.2"]
+dependencies = [
+    "typer>=0.12.5",
+    "pydantic>=2.9.2",
+    "dependency-injector>=4.42.0",
+]
 description = "cli for make latex building easier"
 license = { text = "MIT" }
 name = "ltx"
@@ -16,7 +20,7 @@ version = "0.1.0"
 distribution = true
 
 [tool.pdm.scripts]
-ltx = { call = "ltx.__main__:cli" }
+cli = { call = "ltx.__main__:main" }
 compile = { cmd = "pyinstaller -Fyn ltx ltx/__main__.py" }
 
 [tool.pdm.dev-dependencies]

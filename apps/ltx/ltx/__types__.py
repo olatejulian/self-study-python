@@ -11,8 +11,8 @@ class LtxConfigDirsDict(TypedDict):
 
 
 class LtxConfigDict(TypedDict):
-    dirs: LtxConfigDirsDict
-    args: list[str]
+    arguments: list[str]
+    directories: LtxConfigDirsDict
 
 
 class LtxConfigDirPathsDict(TypedDict):
