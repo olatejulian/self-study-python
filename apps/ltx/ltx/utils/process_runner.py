@@ -11,9 +11,8 @@ class ProcessRunner:
 
         try:
             msg = "Exec:\n" + command_str
-            self.__logger.info(msg)
 
-            print(msg)
+            self.__logger.info(msg)
 
             output = subprocess.run(command, capture_output=True, text=True)
 

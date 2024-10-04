@@ -30,6 +30,4 @@ class JsonLtxrcParser(LtxrcParser):
             raise LtxrcSchemaException(exc) from exc
 
         else:
-            print(ltxrc)
-
             return ltxrc

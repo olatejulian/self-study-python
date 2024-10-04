@@ -6,6 +6,4 @@ def Latexmk(file_path: Path, args: list[str] | None = None) -> list[str]:
 
     cmd = ["latexmk", *__args, str(file_path.resolve().absolute())]
 
-    print(cmd)
-
     return cmd
