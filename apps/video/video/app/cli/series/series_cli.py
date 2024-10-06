@@ -9,7 +9,7 @@ seriesCli = Typer(name="series")
 
 
 @seriesCli.command()
-def rename_series_episodes(
+def rename_episodes(
     series_path: str,
     episode_pattern: Optional[str] = None,
     new_episode_pattern: Optional[str] = None,
@@ -23,7 +23,14 @@ def rename_series_episodes(
 
     __series_name = series_name or __series_path.name
 
-    if not (episode_pattern and new_episode_pattern):
+    if not episode_pattern:
+        console.print("INSERT EPISODE PATTERN")
+
+        return None
+
+    if not new_episode_pattern:
+        console.print("INSERT NEW EPISODE PATTERN")
+
         return None
 
     series = Series(

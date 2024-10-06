@@ -1,5 +1,4 @@
 from typer import Typer
-
 from video.app import seriesCli
 
 

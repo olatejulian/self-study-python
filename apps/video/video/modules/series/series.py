@@ -31,9 +31,13 @@ class Series:
 
     def rename_episodes(
         self,
-        series_directory: Path,
+        series_directory: str | Path,
         callback: Callable[[Path, SeriesEpisodeInfoDict], None] | None = None,
     ) -> Iterator[Path]:
+        series_directory = (
+            Path(series_directory).resolve().absolute().resolve()
+        )
+
         for episode_path in self.__series_directory_iterator(series_directory):
             if episode_info := self.__get_episode_info(episode_path):
                 if callback:
@@ -53,16 +57,11 @@ class Series:
     def __series_directory_iterator(
         self, series_directory: Path
     ) -> Iterator[Path]:
-        if series_directory.exists():
-            if series_directory.is_dir():
-                for episode_path in series_directory.iterdir():
-                    if episode_path.is_file():
-                        episode_file_extension = episode_path.suffix
+        for episode_path in series_directory.iterdir():
+            episode_file_extension = episode_path.suffix
 
-                        if self.__verify_episode_file_extension(
-                            episode_file_extension
-                        ):
-                            yield episode_path
+            if self.__verify_episode_file_extension(episode_file_extension):
+                yield episode_path
 
     def __ensure_zero_padding(self, number: int | str) -> str:
         return str(number).zfill(self.__default_zero_padding_length)
@@ -70,11 +69,11 @@ class Series:
     def __get_episode_info(
         self, episode_path: Path
     ) -> SeriesEpisodeInfoDict | None:
-        regex = re.compile(self.__episode_pattern)
+        compiled_regex_pattern = re.compile(self.__episode_pattern)
 
         episode_file_name = episode_path.stem
 
-        match = regex.match(episode_file_name)
+        match = re.search(compiled_regex_pattern, episode_file_name)
 
         if not match:
             return None
