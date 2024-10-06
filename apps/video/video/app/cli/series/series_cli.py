@@ -11,8 +11,8 @@ seriesCli = Typer(name="series")
 @seriesCli.command()
 def rename_series_episodes(
     series_path: str,
-    series_episode_pattern: str,
-    new_pattern: str,
+    episode_pattern: Optional[str] = None,
+    new_episode_pattern: Optional[str] = None,
     series_name: Optional[str] = None,
 ):
     console = Console()
@@ -23,10 +23,13 @@ def rename_series_episodes(
 
     __series_name = series_name or __series_path.name
 
+    if not (episode_pattern and new_episode_pattern):
+        return None
+
     series = Series(
         series_name=__series_name,
-        episode_pattern=series_episode_pattern,
-        new_episode_pattern=new_pattern,
+        episode_pattern=episode_pattern,
+        new_episode_pattern=new_episode_pattern,
     )
 
     def callback(episode_path: Path, episode_info: SeriesEpisodeInfoDict):
