@@ -6,20 +6,20 @@ from ._types import SeriesEpisodeInfoDict
 
 
 class Series:
-    __file_extensions = [".mkv", ".mp4"]
+    __episode_file_extensions = [".mkv", ".mp4"]
 
     __default_zero_padding_length = 2
 
     def __init__(
-        self, series_name: str, series_episode_pattern: str, new_pattern: str
+        self, series_name: str, episode_pattern: str, new_episode_pattern: str
     ):
         self.__series_name = series_name
-        self.__series_episode_pattern = series_episode_pattern
-        self.__new_pattern = new_pattern
+        self.__episode_pattern = episode_pattern
+        self.__new_episode_pattern = new_episode_pattern
 
     @property
     def allowed_extensions(self) -> list[str]:
-        return self.__file_extensions
+        return self.__episode_file_extensions
 
     @property
     def zero_padding_length(self) -> int:
@@ -29,50 +29,47 @@ class Series:
     def zero_padding_length(self, zero_padding_length: int):
         self.__default_zero_padding_length = zero_padding_length
 
-    def rename_files(self, series_directory: Path) -> Iterator[Path]:
-        for series_episode_path in self.__series_directory_iterator(
-            series_directory
-        ):
-            if series_episode_info := self.__get_series_episode_info(
-                series_episode_path
-            ):
-                new_series_episode_path = (
-                    self.__rename_series_episode_file_name(
-                        series_episode_path, series_episode_info
-                    )
+    def rename_episodes(
+        self,
+        series_directory: Path,
+    ) -> Iterator[Path]:
+        for episode_path in self.__series_directory_iterator(series_directory):
+            if episode_info := self.__get_episode_info(episode_path):
+                new_episode_path = self.__rename_episode_file_name(
+                    episode_path, episode_info
                 )
 
-                yield new_series_episode_path
+                yield new_episode_path
 
-    def __verify_series_episode_file_extension(
-        self, series_episode_file_extension: str
+    def __verify_episode_file_extension(
+        self, episode_file_extension: str
     ) -> bool:
-        return series_episode_file_extension in self.__file_extensions
+        return episode_file_extension in self.__episode_file_extensions
 
     def __series_directory_iterator(
         self, series_directory: Path
     ) -> Iterator[Path]:
         if series_directory.is_dir():
-            for series_episode_path in series_directory.iterdir():
-                if series_episode_path.is_file():
-                    series_episode_file_extension = series_episode_path.suffix
+            for episode_path in series_directory.iterdir():
+                if episode_path.is_file():
+                    episode_file_extension = episode_path.suffix
 
-                    if self.__verify_series_episode_file_extension(
-                        series_episode_file_extension
+                    if self.__verify_episode_file_extension(
+                        episode_file_extension
                     ):
-                        yield series_episode_path
+                        yield episode_path
 
     def __ensure_zero_padding(self, number: int | str) -> str:
         return str(number).zfill(self.__default_zero_padding_length)
 
-    def __get_series_episode_info(
-        self, series_episode_path: Path
+    def __get_episode_info(
+        self, episode_path: Path
     ) -> SeriesEpisodeInfoDict | None:
-        regex = re.compile(self.__series_episode_pattern)
+        regex = re.compile(self.__episode_pattern)
 
-        series_episode_file_name = series_episode_path.stem
+        episode_file_name = episode_path.stem
 
-        match = regex.match(series_episode_file_name)
+        match = regex.match(episode_file_name)
 
         if not match:
             return None
@@ -89,35 +86,33 @@ class Series:
 
         episode_title = groupdict.get("episode_title", "").strip()
 
-        series_episode_file_extension = series_episode_path.suffix.replace(
-            ".", ""
-        )
+        episode_file_extension = episode_path.suffix.replace(".", "")
 
-        series_episode_info = SeriesEpisodeInfoDict(
+        episode_info = SeriesEpisodeInfoDict(
             {
                 "series_name": series_name,
                 "season_number": season_number,
-                "episode_number": episode_number,
-                "episode_title": episode_title,
-                "file_extension": series_episode_file_extension,
+                "number": episode_number,
+                "title": episode_title,
+                "file_extension": episode_file_extension,
             }
         )
 
-        return series_episode_info
+        return episode_info
 
-    def __rename_series_episode_file_name(
+    def __rename_episode_file_name(
         self,
-        series_episode_path: Path,
-        series_episode_info: SeriesEpisodeInfoDict,
+        episode_path: Path,
+        episode_info: SeriesEpisodeInfoDict,
     ) -> Path:
-        new_series_episode_file_name = self.__new_pattern.format(
-            **series_episode_info
+        new_episode_file_name = self.__new_episode_pattern.format(
+            **episode_info
         )
 
-        new_series_episode_path = (
-            series_episode_path.parent / new_series_episode_file_name
+        new_episode_path = (
+            episode_path.parent / new_episode_file_name
         ).resolve()
 
-        series_episode_path.rename(new_series_episode_path)
+        episode_path.rename(new_episode_path)
 
-        return new_series_episode_path
+        return new_episode_path

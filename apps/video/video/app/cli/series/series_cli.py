@@ -26,12 +26,12 @@ def rename_series_episodes(
 
     series = Series(
         series_name=__series_name,
-        series_episode_pattern=series_episode_pattern,
-        new_pattern=new_pattern,
+        episode_pattern=series_episode_pattern,
+        new_episode_pattern=new_pattern,
     )
 
     try:
-        path_iterator = series.rename_files(__series_path)
+        path_iterator = series.rename_episodes(__series_path)
 
         new_series_episodes_paths = list(path_iterator)
 
