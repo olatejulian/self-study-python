@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import Iterator
+from typing import Callable, Iterator
 
 from ._types import SeriesEpisodeInfoDict
 
@@ -32,9 +32,13 @@ class Series:
     def rename_episodes(
         self,
         series_directory: Path,
+        callback: Callable[[Path, SeriesEpisodeInfoDict], None] | None = None,
     ) -> Iterator[Path]:
         for episode_path in self.__series_directory_iterator(series_directory):
             if episode_info := self.__get_episode_info(episode_path):
+                if callback:
+                    callback(episode_path, episode_info)
+
                 new_episode_path = self.__rename_episode_file_name(
                     episode_path, episode_info
                 )
@@ -49,15 +53,16 @@ class Series:
     def __series_directory_iterator(
         self, series_directory: Path
     ) -> Iterator[Path]:
-        if series_directory.is_dir():
-            for episode_path in series_directory.iterdir():
-                if episode_path.is_file():
-                    episode_file_extension = episode_path.suffix
+        if series_directory.exists():
+            if series_directory.is_dir():
+                for episode_path in series_directory.iterdir():
+                    if episode_path.is_file():
+                        episode_file_extension = episode_path.suffix
 
-                    if self.__verify_episode_file_extension(
-                        episode_file_extension
-                    ):
-                        yield episode_path
+                        if self.__verify_episode_file_extension(
+                            episode_file_extension
+                        ):
+                            yield episode_path
 
     def __ensure_zero_padding(self, number: int | str) -> str:
         return str(number).zfill(self.__default_zero_padding_length)

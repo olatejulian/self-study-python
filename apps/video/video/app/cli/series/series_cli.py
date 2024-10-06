@@ -3,8 +3,7 @@ from typing import Optional
 
 from rich.console import Console
 from typer import Typer
-
-from ....modules import Series
+from video.modules import Series, SeriesEpisodeInfoDict
 
 seriesCli = Typer(name="series")
 
@@ -30,13 +29,23 @@ def rename_series_episodes(
         new_episode_pattern=new_pattern,
     )
 
+    def callback(episode_path: Path, episode_info: SeriesEpisodeInfoDict):
+        console.print(
+            *(
+                [f"Episode File Name: {episode_path.name}"]
+                + [f"{key}: {value}" for key, value in episode_info.items()]
+            ),
+            sep="  \n",
+            end="\n\n",
+        )
+
     try:
-        path_iterator = series.rename_episodes(__series_path)
+        path_iterator = series.rename_episodes(__series_path, callback)
 
         new_series_episodes_paths = list(path_iterator)
 
-    except Exception as exc:
-        console_err.print(exc)
+    except Exception:
+        console_err.print_exception()
 
     else:
         console.print(new_series_episodes_paths, sep="\n", end="\n\n")
