@@ -26,6 +26,7 @@ dev = [
     "-e file:///${PROJECT_ROOT}/apps/ltx",
     "-e file:///${PROJECT_ROOT}/apps/storage",
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
+    "-e file:///${PROJECT_ROOT}/apps/video",
     "-e file:///${PROJECT_ROOT}/modules/chronos",
     "-e file:///${PROJECT_ROOT}/modules/cqrs",
     "-e file:///${PROJECT_ROOT}/modules/fs",
@@ -39,7 +40,10 @@ dev = [
 
 [tool.pdm.scripts]
 automaton = { cmd = "cd apps/automaton;pdm {args}; cd ../../", help = "Run PDM inside automaton app." }
+
 ltx = { help = "Run PDM inside ltx app.", shell = "cd apps/ltx;pdm {args}; cd ../../" }
+
+video = { help = "Run PDM inside video app.", shell = "cd apps/video;pdm {args}; cd ../../" }
 
 [tool.ruff]
 line-length = 79
