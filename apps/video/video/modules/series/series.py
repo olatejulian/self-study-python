@@ -97,8 +97,8 @@ class Series:
             {
                 "series_name": series_name,
                 "season_number": season_number,
-                "number": episode_number,
-                "title": episode_title,
+                "episode_number": episode_number,
+                "episode_title": episode_title,
                 "file_extension": episode_file_extension,
             }
         )
