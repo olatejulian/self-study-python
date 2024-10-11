@@ -1,48 +1,26 @@
 [project]
-name = "py-api-example"
-version = "0.0.0"
-description = "A simple example of a Python API using FastAPI and Beanie"
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = [
     "aiosmtplib>=2.0.2",
     "beanie>=1.17.0",
     "email-validator>=2.0.0.post2",
     "fastapi>=0.95.1",
+    "flower>=2.0.0",
     "jinja2>=3.1.2",
     "motor>=3.1.1",
     "passlib[bcrypt]>=1.7.4",
+    "pendulum>=2.1.2",
     "pydantic>=1.10.7",
     "python-dotenv>=1.0.0",
     "python-jose[cryptography]>=3.3.0",
     "python-multipart>=0.0.6",
     "uvicorn>=0.22.0",
-    "pendulum>=2.1.2",
-    "flower>=2.0.0",
 ]
-requires-python = ">=3.12,<3.13"
+description = "A simple example of a Python API using FastAPI and Beanie"
 license = { text = "MIT" }
-
-[tool.pdm]
-[tool.pdm.dev-dependencies]
-dev = [
-    "beautifulsoup4>=4.12.2",
-    "httpx>=0.24.1",
-    "mypy>=1.3.0",
-    "python-semantic-release>=7.34.3",
-    "types-passlib>=1.7.7.12",
-    "watchdog>=3.0.0",
-    "pytest>=7.4.0",
-    "pytest-cov>=4.1.0",
-    "pytest-asyncio>=0.21.0",
-]
-
-[tool.pdm.scripts]
-cov = { shell = "clear; pytest --cov=src src" }
-format = { shell = "clear; black src" }
-start = { shell = "clear; uvicorn src.main:app --reload --host 0.0.0.0 --port 3000" }
-release = { shell = "clear; semantic-release publish" }
-test = { shell = "clear; pytest" }
-clean = { shell = "rm -rfv ./**/__pycache__/ ./**/py_api_example.egg-info" }
+name = "py-api-example"
+requires-python = ">=3.12,<3.13"
+version = "0.0.0"
 
 [tool.commitizen]
 major_version_zero = true
@@ -51,6 +29,29 @@ tag_format = "$version"
 update_changelog_on_bump = true
 version_provider = "pep621"
 version_type = "semver"
+
+[tool.pdm]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "beautifulsoup4>=4.12.2",
+    "httpx>=0.24.1",
+    "mypy>=1.3.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest>=7.4.0",
+    "python-semantic-release>=7.34.3",
+    "types-passlib>=1.7.7.12",
+    "watchdog>=3.0.0",
+]
+
+[tool.pdm.scripts]
+clean = { shell = "rm -rfv ./**/__pycache__/ ./**/py_api_example.egg-info" }
+cov = { shell = "clear; pytest --cov=src src" }
+format = { shell = "clear; black src" }
+release = { shell = "clear; semantic-release publish" }
+start = { shell = "clear; uvicorn src.main:app --reload --host 0.0.0.0 --port 3000" }
+test = { shell = "clear; pytest" }
 
 [tool.semantic_release]
 branch = "release"
@@ -61,4 +62,4 @@ upload_to_pypi = false
 upload_to_release = true
 upload_to_repository = false
 version_source = "tag"
-version_variable = ["src.__init__.py:__version__", "pyproject.toml:version"]
+version_variable = ["pyproject.toml:version", "src.__init__.py:__version__"]
