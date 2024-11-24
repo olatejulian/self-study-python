@@ -24,6 +24,7 @@ dev = [
     "-e file:///${PROJECT_ROOT}/apps/automaton",
     "-e file:///${PROJECT_ROOT}/apps/code-generator",
     "-e file:///${PROJECT_ROOT}/apps/ltx",
+    "-e file:///${PROJECT_ROOT}/apps/pdf",
     "-e file:///${PROJECT_ROOT}/apps/storage",
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
     "-e file:///${PROJECT_ROOT}/apps/video",
@@ -42,6 +43,7 @@ dev = [
 automaton = { help = "Run PDM inside automaton app.", shell = "cd apps/automaton;pdm {args}; cd ../../" }
 ltx = { help = "Run PDM inside ltx app.", shell = "cd apps/ltx;pdm {args}; cd ../../" }
 video = { help = "Run PDM inside video app.", shell = "cd apps/video;pdm {args}; cd ../../" }
+pdf = { help = "Run PDM inside pdf app.", shell = "cd apps/pdf;pdm {args}; cd ../../" }
 
 [tool.ruff]
 line-length = 79
