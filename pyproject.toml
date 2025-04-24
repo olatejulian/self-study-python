@@ -25,6 +25,7 @@ dev = [
     "-e file:///${PROJECT_ROOT}/apps/code-generator",
     "-e file:///${PROJECT_ROOT}/apps/ltx",
     "-e file:///${PROJECT_ROOT}/apps/pdf",
+    "-e file:///${PROJECT_ROOT}/apps/pkm",
     "-e file:///${PROJECT_ROOT}/apps/storage",
     "-e file:///${PROJECT_ROOT}/apps/url-shortner",
     "-e file:///${PROJECT_ROOT}/apps/video",
