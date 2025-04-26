@@ -1,0 +1,12 @@
+[build-system]
+build-backend = "pdm.pep517.api"
+requires = ["pdm-pep517>=1.0.0"]
+
+[project]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
+dependencies = []
+description = ""
+name = "url_shortener"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+version = "0.1.0"
