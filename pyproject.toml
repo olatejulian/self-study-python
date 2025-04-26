@@ -7,7 +7,7 @@ authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = []
 description = "A monorepo designed for learning and practicing Python programming"
 license = { text = "MIT" }
-name = "self-study-python"
+name = "pyomnirepo"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 version = "0.0.0"
@@ -20,31 +20,31 @@ distribution = true
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "-e file:///${PROJECT_ROOT}/apps/api-example",
-    "-e file:///${PROJECT_ROOT}/apps/automaton",
-    "-e file:///${PROJECT_ROOT}/apps/code-generator",
-    "-e file:///${PROJECT_ROOT}/apps/ltx",
-    "-e file:///${PROJECT_ROOT}/apps/pdf",
-    "-e file:///${PROJECT_ROOT}/apps/pkm",
-    "-e file:///${PROJECT_ROOT}/apps/storage",
-    "-e file:///${PROJECT_ROOT}/apps/url-shortner",
-    "-e file:///${PROJECT_ROOT}/apps/video",
-    "-e file:///${PROJECT_ROOT}/modules/chronos",
-    "-e file:///${PROJECT_ROOT}/modules/cqrs",
-    "-e file:///${PROJECT_ROOT}/modules/fs",
-    "-e file:///${PROJECT_ROOT}/modules/rpc",
-    "-e file:///${PROJECT_ROOT}/modules/seedwork",
-    "-e file:///${PROJECT_ROOT}/modules/tools",
-    "mypy>=1.11.1",
-    "ruff>=0.5.6",
-    "toml-sort>=0.23.1",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/api-example",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/automaton",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/chronos",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/code-generator",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/cqrs",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/fs",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/ltx",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/pdf",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/pkm",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/rpc",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/seedwork",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/storage",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/tools",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/url-shortner",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/video",
+  "mypy>=1.11.1",
+  "ruff>=0.5.6",
+  "toml-sort>=0.23.1",
 ]
 
 [tool.pdm.scripts]
-automaton = { help = "Run PDM inside automaton app.", shell = "cd apps/automaton;pdm {args}; cd ../../" }
-ltx = { help = "Run PDM inside ltx app.", shell = "cd apps/ltx;pdm {args}; cd ../../" }
-video = { help = "Run PDM inside video app.", shell = "cd apps/video;pdm {args}; cd ../../" }
-pdf = { help = "Run PDM inside pdf app.", shell = "cd apps/pdf;pdm {args}; cd ../../" }
+automaton = { help = "Run PDM inside automaton app.", shell = "cd pyomnirepo/automaton;pdm {args}; cd ../../" }
+ltx = { help = "Run PDM inside ltx app.", shell = "cd pyomnirepo/ltx;pdm {args}; cd ../../" }
+pdf = { help = "Run PDM inside pdf app.", shell = "cd pyomnirepo/pdf;pdm {args}; cd ../../" }
+video = { help = "Run PDM inside video app.", shell = "cd pyomnirepo/video;pdm {args}; cd ../../" }
 
 [tool.ruff]
 line-length = 79
