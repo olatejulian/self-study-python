@@ -44,6 +44,7 @@ dev = [
 automaton = { help = "Run PDM inside automaton app.", shell = "cd pyomnirepo/automaton;pdm {args}; cd ../../" }
 ltx = { help = "Run PDM inside ltx app.", shell = "cd pyomnirepo/ltx;pdm {args}; cd ../../" }
 pdf = { help = "Run PDM inside pdf app.", shell = "cd pyomnirepo/pdf;pdm {args}; cd ../../" }
+sort = { help = "Sort pyproject.toml.", shell = "toml-sort -ai pyproject.toml" }
 video = { help = "Run PDM inside video app.", shell = "cd pyomnirepo/video;pdm {args}; cd ../../" }
 
 [tool.ruff]
