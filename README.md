@@ -26,6 +26,16 @@ The monorepo includes a variety of projects that are organized into different di
 To get started with the `self-study-python` monorepo, you'll need to clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/self-study-python.git
+git clone https://github.com/olatejulian/self-study-python.git
 cd self-study-python
+```
+
+## License
+
+```text
+MIT License
+
+Copyright (c) 2024 Julian Olate
+
+Permission is hereby granted, free of charge, to any person obtaining
 ```
