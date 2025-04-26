@@ -33,7 +33,7 @@ dev = [
   "-e file:///${PROJECT_ROOT}/pyomnirepo/seedwork",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/storage",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/tools",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/url-shortner",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/url_shortener",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/video",
   "mypy>=1.11.1",
   "ruff>=0.5.6",
