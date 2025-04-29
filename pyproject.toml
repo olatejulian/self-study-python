@@ -29,6 +29,7 @@ dev = [
   "-e file:///${PROJECT_ROOT}/pyomnirepo/ltx",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/pdf",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/pkm",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/pyls",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/rpc",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/seedwork",
   "-e file:///${PROJECT_ROOT}/pyomnirepo/storage",
