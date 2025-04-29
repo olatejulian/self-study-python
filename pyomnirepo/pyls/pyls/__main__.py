@@ -1,6 +1,6 @@
 from typing import Any
 
-from .cli import pyls_cli
+from pyls.cli import pyls_cli
 
 
 def main() -> Any:

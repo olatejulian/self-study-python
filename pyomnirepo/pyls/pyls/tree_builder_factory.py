@@ -1,6 +1,6 @@
 from .formatter_label import LabelFormatterFactory, LabelFormatterStyle
 from .sorting_context import DefaultSortingContext, SortingContext
-from .sorting_strategy import SortBy, SortByStrategyFactory
+from .sorting_strategy_factory import SortBy, SortByStrategyFactory
 from .tree_builder_context import TreeBuilderContext
 from .tree_builder_strategy import (
     TreeBuilderStrategyFactory,
