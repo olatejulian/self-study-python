@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Generic
 
-from .sorting_types import TContent, TOutput
+from ._types import TContent, TOutput
 
 
 class SortingStrategy(ABC, Generic[TOutput]):

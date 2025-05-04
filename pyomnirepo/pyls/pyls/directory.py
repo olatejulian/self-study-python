@@ -4,11 +4,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterator, TypedDict
 
+from ._exceptions import PathIsNotDirectoryException
 from .file import File
-
-
-class NotADirectoryException(Exception):
-    pass
 
 
 class DirectoryDump(TypedDict):
@@ -26,7 +23,7 @@ class Directory:
         expression = path.exists() and path.is_dir()
 
         if not expression:
-            raise NotADirectoryException()
+            raise PathIsNotDirectoryException()
 
     def __init__(self, path: Path):
         Directory.__validate(path)

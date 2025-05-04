@@ -2,9 +2,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import TypedDict
 
-
-class NotAFileException(Exception):
-    pass
+from ._exceptions import (
+    PathIsNotFileException,
+)
 
 
 class FileDump(TypedDict):
@@ -29,7 +29,7 @@ class File:
         expression = path.exists() and path.is_file()
 
         if not expression:
-            raise NotAFileException
+            raise PathIsNotFileException
 
     @property
     def name(self) -> str:

@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Callable, Generic, Iterable
 
+from ._types import TContent, TOutput
 from .directory import Directory
 from .sorting_strategy import SortingStrategy
-from .sorting_types import TContent, TOutput
 
 
 class SortingContext(ABC, Generic[TOutput]):
