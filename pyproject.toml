@@ -2,6 +2,26 @@
 build-backend = "pdm.backend"
 requires = ["pdm-backend"]
 
+[dependency-groups]
+workspace = [
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/api-example",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/automaton",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/chronos",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/code-generator",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/cqrs",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/fs",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/ltx",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/pdf",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/pkm",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/pyls",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/rpc",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/seedwork",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/storage",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/tools",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/url_shortener",
+  "-e file:///${PROJECT_ROOT}/pyomnirepo/video",
+]
+
 [project]
 authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = []
@@ -19,27 +39,7 @@ disable_error_code = "import-untyped"
 distribution = true
 
 [tool.pdm.dev-dependencies]
-dev = [
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/api-example",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/automaton",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/chronos",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/code-generator",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/cqrs",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/fs",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/ltx",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/pdf",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/pkm",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/pyls",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/rpc",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/seedwork",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/storage",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/tools",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/url_shortener",
-  "-e file:///${PROJECT_ROOT}/pyomnirepo/video",
-  "mypy>=1.11.1",
-  "ruff>=0.5.6",
-  "toml-sort>=0.23.1",
-]
+dev = ["mypy>=1.11.1", "ruff>=0.5.6", "toml-sort>=0.23.1"]
 
 [tool.pdm.scripts]
 automaton = { help = "Run PDM inside automaton app.", shell = "cd pyomnirepo/automaton;pdm {args}; cd ../../" }
@@ -47,6 +47,7 @@ ltx = { help = "Run PDM inside ltx app.", shell = "cd pyomnirepo/ltx;pdm {args};
 pdf = { help = "Run PDM inside pdf app.", shell = "cd pyomnirepo/pdf;pdm {args}; cd ../../" }
 sort = { help = "Sort pyproject.toml.", shell = "toml-sort -ai pyproject.toml" }
 video = { help = "Run PDM inside video app.", shell = "cd pyomnirepo/video;pdm {args}; cd ../../" }
+pyls = { help = "Run PDM inside pyls app.", shell = "cd pyomnirepo/pyls;pdm {args}; cd ../../" }
 
 [tool.ruff]
 line-length = 79
