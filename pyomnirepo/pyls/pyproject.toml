@@ -4,7 +4,7 @@ requires = ["pdm-backend"]
 
 [project]
 authors = [{email = "julian.lf.olate@gmail.com", name = "olatejulian"}]
-dependencies = ["typer>=0.15.2", "rich>=14.0.0"]
+dependencies = ["typer>=0.15.2", "rich>=14.0.0", "pathspec>=0.12.1"]
 description = "cli for simple list directory contents"
 license = {text = "MIT"}
 name = "pyls"
