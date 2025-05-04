@@ -16,15 +16,27 @@ pyls_cli = Typer(name="pyls")
 
 @pyls_cli.command()
 def pyls(
-    path: str = Argument(".", help="Path to the root directory"),
+    path: Path = Argument(Path("."), help="Path to the root directory"),
     reverse: bool = Option(False, help="Reverse sort order"),
     dirs_first: bool = Option(True, help="Directories first"),
-    sort_by: SortBy = Option(SortBy.NAME, help="Sort by"),
-    label_formatter_style: LabelFormatterStyle = Option(
-        LabelFormatterStyle.SIMPLE, help="Label formatter style"
+    ignore_contents: list[str] = Option(
+        [], "--ignore", "-I", help="Content filter"
+    ),
+    ignore_contents_from_file: Path = Option(
+        Path(".gitignore"), "--file-ignore", "-F", help="Content filter file"
+    ),
+    sort_by: SortBy = Option(SortBy.NAME, "--sort-by", "-S", help="Sort by"),
+    label_style: LabelFormatterStyle = Option(
+        LabelFormatterStyle.SIMPLE,
+        "--label-style",
+        "-L",
+        help="Label style",
     ),
     tree_builder_method: TreeBuilderStrategyName = Option(
-        TreeBuilderStrategyName.MULTI_THREAD, help="Method to build the tree"
+        TreeBuilderStrategyName.MULTI_THREAD,
+        "--tree-builder-method",
+        "-T",
+        help="Method to build the tree",
     ),
 ):
     console, console_err = Console(), Console(stderr=True)
@@ -32,11 +44,20 @@ def pyls(
     try:
         root_directory = Directory(Path(path))
 
+        if (
+            ignore_contents_from_file.exists()
+            and ignore_contents_from_file.is_file()
+        ):
+            ignore_contents.extend(
+                ignore_contents_from_file.read_text("utf-8").splitlines()
+            )
+
         tree_builder = TreeBuilderFactory.create(
             reverse,
             dirs_first,
             sort_by,
-            label_formatter_style,
+            ignore_contents,
+            label_style,
             tree_builder_method,
         )
 

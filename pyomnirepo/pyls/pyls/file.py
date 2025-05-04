@@ -19,17 +19,22 @@ class FileDump(TypedDict):
 
 
 class File:
-    def __init__(self, path: Path):
-        File.__validate(path)
-
-        self.__path = path
-
     @staticmethod
     def __validate(path: Path) -> None:
         expression = path.exists() and path.is_file()
 
         if not expression:
             raise PathIsNotFileException
+
+    def __init__(self, path: Path):
+        File.__validate(path)
+
+        self.__path = path
+
+    def __iter__(self):
+        with open(file=self.__path, mode="r", encoding="utf-8") as file:
+            while line := file.readline():
+                yield line
 
     @property
     def name(self) -> str:

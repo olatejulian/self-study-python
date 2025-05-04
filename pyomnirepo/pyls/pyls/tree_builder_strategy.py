@@ -7,16 +7,21 @@ from rich.tree import Tree
 
 from .directory import Directory
 from .file import File
+from .filter import Filter
 from .formatter_label import LabelFormatter
 from .sorting_context import SortingContext
 
 
 class TreeBuilderStrategy(ABC):
     def __init__(
-        self, label_formatter: LabelFormatter, sort_by_provider: SortingContext
+        self,
+        label_formatter: LabelFormatter,
+        content_sorter: SortingContext,
+        content_filter: Filter,
     ) -> None:
         self._label_formatter = label_formatter
-        self._sort_by_provider = sort_by_provider
+        self._content_sorter = content_sorter
+        self._content_filter = content_filter
 
     @abstractmethod
     def build(self, tree: Tree, directory: Directory) -> None: ...
@@ -34,35 +39,40 @@ class TreeBuilderStrategyFactory:
     def create(
         builder_name: TreeBuilderStrategyName,
         label_formatter: LabelFormatter,
-        sort_by_context: SortingContext,
+        content_sorter: SortingContext,
+        content_filter: Filter,
     ) -> TreeBuilderStrategy:
         builders: dict[TreeBuilderStrategyName, TreeBuilderStrategy] = {}
 
         builders[TreeBuilderStrategyName.NON_RECURSIVE] = (
             NonRecursiveTreeBuilderStrategy(
                 label_formatter,
-                sort_by_context,
+                content_sorter,
+                content_filter,
             )
         )
 
         builders[TreeBuilderStrategyName.DEPTH_FIRST] = (
             DepthFirstSearchTreeBuilderStrategy(
                 label_formatter,
-                sort_by_context,
+                content_sorter,
+                content_filter,
             )
         )
 
         builders[TreeBuilderStrategyName.BREADTH_FIRST] = (
             BreadthFirstSearchTreeBuilderStrategy(
                 label_formatter,
-                sort_by_context,
+                content_sorter,
+                content_filter,
             )
         )
 
         builders[TreeBuilderStrategyName.MULTI_THREAD] = (
             MultiThreadSearchTreeBuilderStrategy(
                 label_formatter,
-                sort_by_context,
+                content_sorter,
+                content_filter,
             )
         )
 
@@ -71,7 +81,9 @@ class TreeBuilderStrategyFactory:
 
 class NonRecursiveTreeBuilderStrategy(TreeBuilderStrategy):
     def build(self, tree: Tree, directory: Directory) -> None:
-        sorted_directory = self._sort_by_provider.sort(directory)
+        filtered_directory = self._content_filter.apply(directory)
+
+        sorted_directory = self._content_sorter.sort(filtered_directory)
 
         for content in sorted_directory:
             if isinstance(content, Directory):
@@ -87,7 +99,9 @@ class NonRecursiveTreeBuilderStrategy(TreeBuilderStrategy):
 
 class DepthFirstSearchTreeBuilderStrategy(TreeBuilderStrategy):
     def build(self, tree: Tree, directory: Directory) -> None:
-        sorted_directory = self._sort_by_provider.sort(directory)
+        filtered_directory = self._content_filter.apply(directory)
+
+        sorted_directory = self._content_sorter.sort(filtered_directory)
 
         for content in sorted_directory:
             if isinstance(content, Directory):
@@ -112,7 +126,9 @@ class BreadthFirstSearchTreeBuilderStrategy(TreeBuilderStrategy):
         while queue:
             current_tree, current_directory = queue.popleft()
 
-            sorted_directory = self._sort_by_provider.sort(current_directory)
+            filtered_directory = self._content_filter.apply(current_directory)
+
+            sorted_directory = self._content_sorter.sort(filtered_directory)
 
             for content in sorted_directory:
                 if isinstance(content, Directory):
@@ -147,7 +163,9 @@ class MultiThreadSearchTreeBuilderStrategy(TreeBuilderStrategy):
         futures: list[Future[None]],
         executor: ThreadPoolExecutor,
     ) -> None:
-        sorted_directory = self._sort_by_provider.sort(directory)
+        filtered_directory = self._content_filter.apply(directory)
+
+        sorted_directory = self._content_sorter.sort(filtered_directory)
 
         for content in sorted_directory:
             if isinstance(content, Directory):

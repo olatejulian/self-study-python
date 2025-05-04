@@ -1,3 +1,4 @@
+from .filter import Filter
 from .formatter_label import LabelFormatterFactory, LabelFormatterStyle
 from .sorting_context import DefaultSortingContext, SortingContext
 from .sorting_strategy_factory import SortBy, SortByStrategyFactory
@@ -14,6 +15,7 @@ class TreeBuilderFactory:
         reverse: bool,
         dirs_first: bool,
         sort_by: SortBy,
+        ignore_contents: list[str],
         label_formatter_style: LabelFormatterStyle,
         tree_builder_method: TreeBuilderStrategyName,
     ) -> TreeBuilderContext:
@@ -25,8 +27,13 @@ class TreeBuilderFactory:
             sort_by_strategy, reverse, dirs_first
         )
 
+        content_filter = Filter(ignore_contents)
+
         tree_builder_strategy = TreeBuilderStrategyFactory.create(
-            tree_builder_method, label_formatter, sort_by_context
+            tree_builder_method,
+            label_formatter,
+            sort_by_context,
+            content_filter,
         )
 
         tree_builder_context = TreeBuilderContext(
