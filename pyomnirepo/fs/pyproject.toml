@@ -3,7 +3,7 @@ name = "fs"
 version = "0.0.0"
 description = "A module to handle filesystem operations"
 authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
-dependencies = ["pydantic>=2.11.4"]
+dependencies = ["pydantic>=2.11.4", "xmltodict>=0.14.2"]
 requires-python = ">=3.12,<3.13"
 readme = "README.md"
 license = { text = "MIT" }
