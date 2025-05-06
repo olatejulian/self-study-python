@@ -42,12 +42,7 @@ distribution = true
 dev = ["mypy>=1.11.1", "ruff>=0.5.6", "toml-sort>=0.23.1"]
 
 [tool.pdm.scripts]
-automaton = { help = "Run PDM inside automaton app.", shell = "cd pyomnirepo/automaton;pdm {args}; cd ../../" }
-ltx = { help = "Run PDM inside ltx app.", shell = "cd pyomnirepo/ltx;pdm {args}; cd ../../" }
-pdf = { help = "Run PDM inside pdf app.", shell = "cd pyomnirepo/pdf;pdm {args}; cd ../../" }
 sort = { help = "Sort pyproject.toml.", shell = "toml-sort -ai pyproject.toml" }
-video = { help = "Run PDM inside video app.", shell = "cd pyomnirepo/video;pdm {args}; cd ../../" }
-pyls = { help = "Run PDM inside pyls app.", shell = "cd pyomnirepo/pyls;pdm {args}; cd ../../" }
 
 [tool.ruff]
 line-length = 79
