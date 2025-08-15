@@ -49,6 +49,4 @@ def title_as_file_name(pdf_path: str):
 
 @pdf_cli.command()
 def set_many_title_as_file_name(dir_path: str):
-    common.try_run(
-        commands.set_many_title_as_file_name, directory_path=dir_path
-    )
+    common.try_run(commands.set_many_title_as_file_name, directory_path=dir_path)

@@ -1,7 +1,12 @@
 from interface import Interface
 
 from ...utils.app_types import Id
-from ...schemas.file_metadata_schema import FileMetadataCreate, FileMetadataUpdate, FileMetadata
+from ...schemas.file_metadata_schema import (
+    FileMetadataCreate,
+    FileMetadataUpdate,
+    FileMetadata,
+)
+
 
 class IFilesMetadataRepository(Interface):
     def create(self, file_metadata: FileMetadataCreate) -> Id:

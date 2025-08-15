@@ -1,4 +1,3 @@
-
 import rich
 
 from automaton.modules import path as p
@@ -56,6 +55,4 @@ def set_many_title_as_file_name(directory_path: str):
 
     for file in p.list_files(path):
         if pdf.is_pdf_file(file):
-            pdf.PDF(path).set_metadata(
-                pdf.PdfMetaData(title=p.get_file_name(file))
-            )
+            pdf.PDF(path).set_metadata(pdf.PdfMetaData(title=p.get_file_name(file)))

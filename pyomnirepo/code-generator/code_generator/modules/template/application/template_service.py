@@ -20,9 +20,7 @@ class TemplateService:
         template_dict: TemplateDict = {
             "name": dto.template_name,
             "description": dto.template_description,
-            "main_directory": self.__directory_loader.load(
-                dto.sample_directory_path
-            ),
+            "main_directory": self.__directory_loader.load(dto.sample_directory_path),
             "metadata": {"sample_directory_path": dto.sample_directory_path},
         }
 

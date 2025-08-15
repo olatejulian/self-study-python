@@ -34,9 +34,7 @@ class Series:
         series_directory: str | Path,
         callback: Callable[[Path, SeriesEpisodeInfoDict], None] | None = None,
     ) -> Iterator[Path]:
-        series_directory = (
-            Path(series_directory).resolve().absolute().resolve()
-        )
+        series_directory = Path(series_directory).resolve().absolute().resolve()
 
         for episode_path in self.__series_directory_iterator(series_directory):
             if episode_info := self.__get_episode_info(episode_path):
@@ -49,14 +47,10 @@ class Series:
 
                 yield new_episode_path
 
-    def __verify_episode_file_extension(
-        self, episode_file_extension: str
-    ) -> bool:
+    def __verify_episode_file_extension(self, episode_file_extension: str) -> bool:
         return episode_file_extension in self.__episode_file_extensions
 
-    def __series_directory_iterator(
-        self, series_directory: Path
-    ) -> Iterator[Path]:
+    def __series_directory_iterator(self, series_directory: Path) -> Iterator[Path]:
         for episode_path in series_directory.iterdir():
             episode_file_extension = episode_path.suffix
 
@@ -66,9 +60,7 @@ class Series:
     def __ensure_zero_padding(self, number: int | str) -> str:
         return str(number).zfill(self.__default_zero_padding_length)
 
-    def __get_episode_info(
-        self, episode_path: Path
-    ) -> SeriesEpisodeInfoDict | None:
+    def __get_episode_info(self, episode_path: Path) -> SeriesEpisodeInfoDict | None:
         compiled_regex_pattern = re.compile(self.__episode_pattern)
 
         episode_file_name = episode_path.stem
@@ -84,9 +76,7 @@ class Series:
 
         season_number = self.__ensure_zero_padding(groupdict["season_number"])
 
-        episode_number = self.__ensure_zero_padding(
-            groupdict["episode_number"]
-        )
+        episode_number = self.__ensure_zero_padding(groupdict["episode_number"])
 
         episode_title = groupdict.get("episode_title", "").strip()
 
@@ -109,13 +99,9 @@ class Series:
         episode_path: Path,
         episode_info: SeriesEpisodeInfoDict,
     ) -> Path:
-        new_episode_file_name = self.__new_episode_pattern.format(
-            **episode_info
-        )
+        new_episode_file_name = self.__new_episode_pattern.format(**episode_info)
 
-        new_episode_path = (
-            episode_path.parent / new_episode_file_name
-        ).resolve()
+        new_episode_path = (episode_path.parent / new_episode_file_name).resolve()
 
         episode_path.rename(new_episode_path)
 

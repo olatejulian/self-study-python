@@ -34,9 +34,7 @@ class Color:
         )
 
     def __add__(self, other: Color) -> Color:
-        other_red_value, other_green_value, other_blue_value = (
-            other.get_colors()
-        )
+        other_red_value, other_green_value, other_blue_value = other.get_colors()
 
         new_red = mean([other_red_value, self.__red])
         new_green = mean([other_green_value, self.__green])
@@ -63,9 +61,7 @@ class Color:
 
     @classmethod
     def from_rgb_string(cls, rgb_string: str) -> Color:
-        red, green, blue = (
-            rgb_string.replace("rgb(", "").replace(")", "").split(",")
-        )
+        red, green, blue = rgb_string.replace("rgb(", "").replace(")", "").split(",")
         return cls(float(red), float(green), float(blue))
 
     @classmethod
@@ -83,9 +79,7 @@ class Color:
 
     @property
     def hex(self):
-        return self.__to_hexadecimal_string(
-            self.__red, self.__green, self.__blue
-        )
+        return self.__to_hexadecimal_string(self.__red, self.__green, self.__blue)
 
     def get_colors(self) -> tuple[float, float, float]:
         return self.__red, self.__green, self.__blue

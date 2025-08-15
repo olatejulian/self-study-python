@@ -27,19 +27,13 @@ class SubRip:
             string=subrip_content,
         )
 
-        self.__srt_file_path.write_text(
-            data=replaced_subrip_content, encoding="utf-8"
-        )
+        self.__srt_file_path.write_text(data=replaced_subrip_content, encoding="utf-8")
 
-    def __repl(
-        self, milliseconds: MilliSecond
-    ) -> Callable[[re.Match[str]], str]:
+    def __repl(self, milliseconds: MilliSecond) -> Callable[[re.Match[str]], str]:
         def repl(match: re.Match[str]) -> str:
             time_line = match.group(0)
 
-            start_time_string, end_time_string = time_line.split(
-                self.__time_sep
-            )
+            start_time_string, end_time_string = time_line.split(self.__time_sep)
 
             start_time = MilliSecond.from_string(start_time_string)
 

@@ -69,4 +69,3 @@ class DefaultAccountVerificationEmailSender(AccountVerificationEmailSender):
             + f"?email={account_email_address.value}"
             + f"&token={password_reset_code.value}"
         )
-

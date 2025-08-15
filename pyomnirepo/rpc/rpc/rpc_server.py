@@ -76,9 +76,7 @@ class RpcServer(HandlerRegister, RpcSocket):
     def run(self):
         self.__socket.set_handler(self.__handle)
 
-        print(
-            f"Running RPC server on {self.__socket.host}:{self.__socket.port}"
-        )
+        print(f"Running RPC server on {self.__socket.host}:{self.__socket.port}")
         try:
             self.__socket.run()
 

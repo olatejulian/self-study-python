@@ -30,9 +30,7 @@ async def test_signup(async_client: AsyncClient):
 
         assert response_body["status_code"] == 200
 
-        assert (
-            response_body["message"] == SIGNUP_RESPONSE_MESSAGE
-        )  # pylint: disable=line-too-long
+        assert response_body["message"] == SIGNUP_RESPONSE_MESSAGE  # pylint: disable=line-too-long
 
         assert response_body["data"]["email"] == request_body["email"]
 

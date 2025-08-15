@@ -16,9 +16,7 @@ class ImplCommandBus(CommandBus):
         self.__logger = logger or logging.getLogger()
         self.__commands: dict[type[Any], CommandHandler] = {}
 
-    def add_command(
-        self, command_type: type[Any], handler: CommandHandler
-    ) -> None:
+    def add_command(self, command_type: type[Any], handler: CommandHandler) -> None:
         self.__commands[command_type] = handler
 
     async def dispatch(self, command: Any) -> None:
@@ -46,9 +44,7 @@ class ImplEventBus(EventBus):
         self.__logger = logger or logging.getLogger()
         self.__events: dict[type[Any], list[EventHandler]] = {}
 
-    def add_event(
-        self, event_type: type[Any], handlers: list[EventHandler]
-    ) -> None:
+    def add_event(self, event_type: type[Any], handlers: list[EventHandler]) -> None:
         if event_type in self.__events:
             self.__events[event_type].extend(handlers)
 

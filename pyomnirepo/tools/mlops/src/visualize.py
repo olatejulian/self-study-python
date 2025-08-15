@@ -1,12 +1,14 @@
 import os
 import matplotlib.pyplot as plt
 
+
 class Visualizing:
-    '''
+    """
     Description:
     ------------
     Plotting graphics using dictionaries as input data.
-    '''
+    """
+
     def __init__(self):
         self.file_path = os.path.dirname(__file__)
 

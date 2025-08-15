@@ -6,9 +6,7 @@ from .types import CommandHandler, EventHandler, QueryHandler
 
 class CommandBus(ABC):
     @abstractmethod
-    def add_command(
-        self, command_type: type[Any], handler: CommandHandler
-    ) -> None:
+    def add_command(self, command_type: type[Any], handler: CommandHandler) -> None:
         raise NotImplementedError
 
     @abstractmethod
@@ -18,9 +16,7 @@ class CommandBus(ABC):
 
 class EventBus(ABC):
     @abstractmethod
-    def add_event(
-        self, event_type: type[Any], handlers: list[EventHandler]
-    ) -> None:
+    def add_event(self, event_type: type[Any], handlers: list[EventHandler]) -> None:
         raise NotImplementedError
 
     @abstractmethod

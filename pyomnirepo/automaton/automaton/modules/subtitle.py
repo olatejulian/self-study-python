@@ -49,7 +49,7 @@ class FloatSecond:
         if "." in seconds_str:
             seconds, milliseconds = seconds_str.split(".")
 
-            return f"{seconds}.{milliseconds.ljust(4,'0')}"
+            return f"{seconds}.{milliseconds.ljust(4, '0')}"
 
         return seconds_str
 
@@ -80,15 +80,11 @@ class SubRipFile:
     def __get_time_in_seconds_from_sub_rip_time_format_str(
         sub_rip_time: re.Match[str],
     ) -> tuple[FloatSecond, FloatSecond]:
-        sub_rip_time_format_str_pattern = re.compile(
-            r"\d{2}:\d{2}:\d{2},\d{3}"
-        )
+        sub_rip_time_format_str_pattern = re.compile(r"\d{2}:\d{2}:\d{2},\d{3}")
 
         sub_rip_time_str = sub_rip_time.group(0)
 
-        all_found_matches = sub_rip_time_format_str_pattern.findall(
-            sub_rip_time_str
-        )
+        all_found_matches = sub_rip_time_format_str_pattern.findall(sub_rip_time_str)
 
         def convert_time_str_to_float_seconds(
             time_str: str,
@@ -142,9 +138,7 @@ class SubRipFile:
         return time_s
 
     @staticmethod
-    def __advance_time(
-        time_s: FloatSecond, advance_s: FloatSecond
-    ) -> FloatSecond:
+    def __advance_time(time_s: FloatSecond, advance_s: FloatSecond) -> FloatSecond:
         time_s -= advance_s
 
         return time_s

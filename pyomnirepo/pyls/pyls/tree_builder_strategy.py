@@ -132,9 +132,7 @@ class BreadthFirstSearchTreeBuilderStrategy(TreeBuilderStrategy):
 
             for content in sorted_directory:
                 if isinstance(content, Directory):
-                    label = self._label_formatter.format_directory_label(
-                        content
-                    )
+                    label = self._label_formatter.format_directory_label(content)
 
                     branch = current_tree.add(label)
 

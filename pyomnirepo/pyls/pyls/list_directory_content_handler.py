@@ -25,9 +25,7 @@ class ListDirectoryContentHandler:
     ) -> Tree:
         root_directory = Directory(path)
 
-        label_formatter = LabelFormatterFactory.create(
-            style=LabelFormatterStyle.SIMPLE
-        )
+        label_formatter = LabelFormatterFactory.create(style=LabelFormatterStyle.SIMPLE)
 
         sort_by_strategy = SortByStrategyFactory.create(sort_by=sort_by)
 

@@ -49,7 +49,5 @@ class YamlTemplateRepository(TemplateRepository):
         path = Path(self.__path)
 
         return [
-            self.get(template.name)
-            for template in path.iterdir()
-            if template.is_file()
+            self.get(template.name) for template in path.iterdir() if template.is_file()
         ]

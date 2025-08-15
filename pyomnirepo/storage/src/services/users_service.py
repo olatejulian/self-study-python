@@ -5,6 +5,7 @@ from ..utils.pagination import Pagination
 from ..schemas.user_schema import UserCreate, UserUpdate, User
 from ..repositories.implementations.user_sqlalchemy_repository import UserRepository
 
+
 class UserService:
     def __init__(self, repository: UserRepository = UserRepository()):
         self.repository = repository

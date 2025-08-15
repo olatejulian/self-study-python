@@ -1,5 +1,6 @@
 import time
 
+
 class AppService:
     def __init__(self, redis_conn):
         self.redis_connection = redis_conn
@@ -25,7 +26,7 @@ class AppService:
         iterator = 0
 
         while iterator <= n:
-            pi_approximation += 4*((-1)**iterator)/(2*iterator+1)
+            pi_approximation += 4 * ((-1) ** iterator) / (2 * iterator + 1)
             # pi_approximation += 8 / ( ( 4 * iterator + 1 ) * ( 4 * iterator + 3) )
 
             iterator += 1
@@ -33,17 +34,17 @@ class AppService:
         return pi_approximation
 
     def save_redis(self, value):
-            key_number = self.redis_key_counter
-            redis_key = f'app.service.process:calculate_pi:job:{key_number}'
+        key_number = self.redis_key_counter
+        redis_key = f"app.service.process:calculate_pi:job:{key_number}"
 
-            try:
-                self.redis_connection.set(redis_key, value)
+        try:
+            self.redis_connection.set(redis_key, value)
 
-            except Exception as exception:
-                print(exception)
+        except Exception as exception:
+            print(exception)
 
-            else:
-                self.redis_key_counter += 1
+        else:
+            self.redis_key_counter += 1
 
-            finally:
-                self.redis_connection.close()
+        finally:
+            self.redis_connection.close()

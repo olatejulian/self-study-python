@@ -10,9 +10,7 @@ class Text:
         self.__text_path = p.verify_path(text_file_path)
 
     def __iter__(self):
-        with open(
-            file=self.__text_path, mode="r", encoding="utf-8"
-        ) as text_file:
+        with open(file=self.__text_path, mode="r", encoding="utf-8") as text_file:
             while line := text_file.readline():
                 yield line
 
@@ -26,9 +24,7 @@ class Text:
                 yield line
 
     @classmethod
-    def read_csv(
-        cls, csv_file_path: str, separator: str = ",", drop_header=False
-    ):
+    def read_csv(cls, csv_file_path: str, separator: str = ",", drop_header=False):
         text = cls(csv_file_path).map(
             lambda line: [line.strip() for line in line.split(separator)]
         )

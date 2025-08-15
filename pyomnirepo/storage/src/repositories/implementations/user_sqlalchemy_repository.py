@@ -10,8 +10,9 @@ from ..models.user_sqlalchemy_model import UserModel
 from ..interfaces.users_interface import IUserRepository
 from ..implementations.sessions.sqlalchemy_session import SQLAlchemySession
 
+
 class UserRepository(implements(IUserRepository)):
-    def __init__(self, session = SQLAlchemySession()):
+    def __init__(self, session=SQLAlchemySession()):
         self.session = session()
 
     def create(self, user: UserCreate) -> Id:
@@ -26,9 +27,7 @@ class UserRepository(implements(IUserRepository)):
 
     def read(self, id: int) -> User:
         with self.session.begin():
-            read_user = self.session.scalar(
-                select(UserModel).where(UserModel.id == id)
-            )
+            read_user = self.session.scalar(select(UserModel).where(UserModel.id == id))
 
             user = User(**read_user._fields())
 
@@ -36,7 +35,11 @@ class UserRepository(implements(IUserRepository)):
 
     def update(self, id: int, user_update: UserUpdate) -> None:
         with self.session.begin():
-            self.session.execute(update(UserModel).where(UserModel.id == id).values(**user_update._fields()))
+            self.session.execute(
+                update(UserModel)
+                .where(UserModel.id == id)
+                .values(**user_update._fields())
+            )
 
     def delete(self, id: int) -> None:
         with self.session.begin():
@@ -45,10 +48,10 @@ class UserRepository(implements(IUserRepository)):
     def read_many(self, pagination: Pagination) -> List[User]:
         with self.session.begin():
             return self.session.execute(
-                select(UserModel) \
-                    .limit(pagination.limit) \
-                    .offset(pagination.skip) \
-                    .order_by(UserModel.created_at)
+                select(UserModel)
+                .limit(pagination.limit)
+                .offset(pagination.skip)
+                .order_by(UserModel.created_at)
             )
 
     def count(self) -> int:

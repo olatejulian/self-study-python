@@ -17,15 +17,11 @@ def build_unbound_container(container: Container | None = None) -> Container:
     if not container:
         container = Container()
 
-    container[PokeDex] = lambda c: SqliteUnboundNationalPokeDex(
-        c[sqlite3.Connection]
-    )
+    container[PokeDex] = lambda c: SqliteUnboundNationalPokeDex(c[sqlite3.Connection])
 
     container[PokemonService] = lambda c: PokemonService(c[PokeDex])
 
-    container[AddPokemonsFromCsv] = lambda c: AddPokemonsFromCsv(
-        c[PokemonService]
-    )
+    container[AddPokemonsFromCsv] = lambda c: AddPokemonsFromCsv(c[PokemonService])
 
     container[PokedexTableConfig] = UnboundTableConfig()
 

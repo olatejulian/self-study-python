@@ -9,8 +9,9 @@ from sklearn.metrics import (
     confusion_matrix,
     classification_report,
     precision_recall_curve,
-    average_precision_score
+    average_precision_score,
 )
+
 
 class Evaluating:
     def __init__(self, y_true, y_pred, y_proba):
@@ -25,8 +26,8 @@ class Evaluating:
         }
 
         self.probabilistic_metrics = {
-            'roc_curve': roc_curve(y_true, y_proba),
-            'roc_auc_score': roc_auc_score(y_true, y_proba),
-            'precision_recall_curve': precision_recall_curve(y_true, y_proba),
-            'average_precision_score': average_precision_score(y_true, y_proba)
+            "roc_curve": roc_curve(y_true, y_proba),
+            "roc_auc_score": roc_auc_score(y_true, y_proba),
+            "precision_recall_curve": precision_recall_curve(y_true, y_proba),
+            "average_precision_score": average_precision_score(y_true, y_proba),
         }

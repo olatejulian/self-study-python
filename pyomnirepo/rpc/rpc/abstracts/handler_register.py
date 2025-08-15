@@ -17,9 +17,7 @@ class HandlerRegister(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def register_handler(
-        self, handler: Handler, name: str | None = None
-    ) -> None:
+    def register_handler(self, handler: Handler, name: str | None = None) -> None:
         raise NotImplementedError
 
     @abstractmethod

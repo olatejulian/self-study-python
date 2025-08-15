@@ -26,8 +26,8 @@ class LtxService:
         file_path = source_path / file_name
 
         latexmk_default_args = [
-            f"-auxdir={self.__config.paths["build"]}",
-            f"-outdir={self.__config.paths["output"]}",
+            f"-auxdir={self.__config.paths['build']}",
+            f"-outdir={self.__config.paths['output']}",
         ]
 
         latexmk_config_args = self.__config.args

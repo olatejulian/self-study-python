@@ -1,8 +1,10 @@
 from src.repositories.interfaces.users_interface import IUserRepository
 
+
 class MockSession:
     def __init__(self):
         pass
+
 
 class FakeUserRepository(IUserRepository):
     def __init__(self, mock_session: MockSession):

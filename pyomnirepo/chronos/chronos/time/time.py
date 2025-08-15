@@ -31,36 +31,22 @@ class Time:
     ) -> Time:
         return Time(
             (Decimal(hours) * cls.__HOUR_TO_MILLISECOND_CONVERSION_FACTOR)
-            + (
-                Decimal(minutes)
-                * cls.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR
-            )
-            + (
-                Decimal(seconds)
-                * cls.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR
-            )
+            + (Decimal(minutes) * cls.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR)
+            + (Decimal(seconds) * cls.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR)
             + Decimal(milliseconds)
         )
 
     @property
     def in_hours(self) -> Decimal:
-        return (
-            self.__milliseconds / self.__HOUR_TO_MILLISECOND_CONVERSION_FACTOR
-        )
+        return self.__milliseconds / self.__HOUR_TO_MILLISECOND_CONVERSION_FACTOR
 
     @property
     def in_minutes(self) -> Decimal:
-        return (
-            self.__milliseconds
-            / self.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR
-        )
+        return self.__milliseconds / self.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR
 
     @property
     def in_seconds(self) -> Decimal:
-        return (
-            self.__milliseconds
-            / self.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR
-        )
+        return self.__milliseconds / self.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR
 
     @property
     def in_milliseconds(self) -> Decimal:
@@ -68,22 +54,18 @@ class Time:
 
     @property
     def hours(self) -> int:
-        return int(
-            self.__milliseconds // self.__HOUR_TO_MILLISECOND_CONVERSION_FACTOR
-        )
+        return int(self.__milliseconds // self.__HOUR_TO_MILLISECOND_CONVERSION_FACTOR)
 
     @property
     def minutes(self) -> int:
         return int(
-            self.__milliseconds
-            // self.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR
+            self.__milliseconds // self.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR
         )
 
     @property
     def seconds(self) -> int:
         return int(
-            self.__milliseconds
-            // self.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR
+            self.__milliseconds // self.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR
         )
 
     @property

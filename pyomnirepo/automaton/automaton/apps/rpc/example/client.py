@@ -13,13 +13,13 @@ def main():
     while True:
         try:
             response = app.message_handler_class(
-                f"hello, it is{datetime.now().strftime(" %Y-%m-%d %H:%M:%S")}"
+                f"hello, it is{datetime.now().strftime(' %Y-%m-%d %H:%M:%S')}"
             )
 
             print("Message Handler Class Response Data:", response.data)
 
             response = app.message_handler_function(
-                f"hello, it is{datetime.now().strftime(" %Y-%m-%d %H:%M:%S")}"
+                f"hello, it is{datetime.now().strftime(' %Y-%m-%d %H:%M:%S')}"
             )
 
             print("Message Handler Function Response Data:", response.data)

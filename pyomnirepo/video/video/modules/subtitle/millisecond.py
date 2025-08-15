@@ -44,9 +44,7 @@ class MilliSecond:
 
         minutes = (self.__milliseconds % self.MS_IN_HOUR) // self.MS_IN_MINUTE
 
-        seconds = (
-            self.__milliseconds % self.MS_IN_MINUTE
-        ) // self.MS_IN_SECOND
+        seconds = (self.__milliseconds % self.MS_IN_MINUTE) // self.MS_IN_SECOND
 
         milliseconds = self.__milliseconds % self.MS_IN_SECOND
 
