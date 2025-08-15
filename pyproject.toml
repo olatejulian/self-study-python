@@ -43,9 +43,6 @@ distribution = true
 [tool.pdm.scripts]
 sort = { help = "Sort pyproject.toml.", shell = "toml-sort -ai pyproject.toml" }
 
-[tool.ruff]
-line-length = 79
-
 [tool.ruff.lint]
 extend-select = ["E501"]
 
