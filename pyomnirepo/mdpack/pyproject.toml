@@ -1,0 +1,29 @@
+[build-system]
+build-backend = "pdm.backend"
+requires = ["pdm-backend"]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "ruff>=0.14.10",
+    "pyinstaller>=4.5.1",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+]
+
+[project]
+dependencies = ["pathspec>=1.1.1", "typer>=0.25.1"]
+description = "A simple markdown packager"
+name = "mdpack"
+requires-python = "<3.15"
+version = "0.0.0"
+
+[tool.pdm]
+distribution = true
+
+[tool.ruff.lint]
+select = ["I"]
+
+[tool.pdm.scripts]
+compile = "pyinstaller --clean -Fn mdpack -y src/mdpack/main.py"
+# for binary generation use: uv run pyinstaller --clean -Fy mdpack.py
