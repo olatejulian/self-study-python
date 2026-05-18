@@ -1,17 +1,9 @@
 [project]
-name = "cqrs"
-version = "0.0.0"
-description = "A module to handle cqrs design patterns"
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = []
-requires-python = ">=3.12,<3.13"
-readme = "README.md"
+description = "A module to handle cqrs design patterns"
 license = { text = "MIT" }
-
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
-
-[tool.pdm]
-distribution = true
+name = "cqrs"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+version = "0.0.0"

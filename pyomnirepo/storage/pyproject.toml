@@ -1,18 +1,14 @@
 [project]
-name = "storage"
-version = "0.1.0"
-description = ""
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+authors = [{email = "julian.lf.olate@gmail.com", name = "olatejulian"}]
 dependencies = [
-    "fastapi>=0.78.0",
-    "SQLAlchemy>=1.4.36",
-    "python-interface>=1.6.1",
-    "python-dotenv>=0.20.0",
+  "SQLAlchemy>=1.4.36",
+  "fastapi>=0.78.0",
+  "python-dotenv>=0.20.0",
+  "python-interface>=1.6.1"
 ]
-requires-python = ">=3.12,<3.13"
+description = ""
+license = {text = "MIT"}
+name = "storage"
 readme = "README.md"
-license = { text = "MIT" }
-
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+requires-python = ">=3.12,<3.13"
+version = "0.0.0"

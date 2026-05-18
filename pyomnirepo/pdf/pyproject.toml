@@ -1,26 +1,9 @@
-[build-system]
-build-backend = "pdm.backend"
-requires = ["pdm-backend"]
-
 [project]
 authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
-dependencies = [
-    "typer>=0.12.5",
-    "pypdf>=5.1.0",
-]
+dependencies = ["pypdf>=5.1.0", "typer>=0.12.5"]
 description = "cli for handle pdf files"
 license = { text = "MIT" }
 name = "pdf"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-version = "0.1.0"
-
-[tool.pdm]
-distribution = true
-
-[tool.pdm.scripts]
-cli = { call = "pdf.__main__:main" }
-compile = { cmd = "pyinstaller -Fyn pdf pdf/__main__.py" }
-
-[tool.pdm.dev-dependencies]
-dev = ["pyinstaller>=6.10.0"]
+version = "0.0.0"

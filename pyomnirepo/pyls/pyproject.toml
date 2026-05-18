@@ -1,23 +1,9 @@
-[build-system]
-build-backend = "pdm.backend"
-requires = ["pdm-backend"]
-
 [project]
-authors = [{email = "julian.lf.olate@gmail.com", name = "olatejulian"}]
-dependencies = ["typer>=0.15.2", "rich>=14.0.0", "pathspec>=0.12.1"]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
+dependencies = ["pathspec>=0.12.1", "rich>=14.0.0", "typer>=0.15.2"]
 description = "cli for simple list directory contents"
-license = {text = "MIT"}
+license = { text = "MIT" }
 name = "pyls"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-version = "0.1.0"
-
-[tool.pdm]
-distribution = true
-
-[tool.pdm.scripts]
-cli = {call = "pyls.__main__:main"}
-compile = {cmd = "pyinstaller -Fyn pyls pyls/__main__.py"}
-
-[tool.pdm.dev-dependencies]
-dev = ["pyinstaller>=6.10.0"]
+version = "0.0.0"

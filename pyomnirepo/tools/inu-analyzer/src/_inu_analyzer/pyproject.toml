@@ -1,15 +1,15 @@
+[build-system]
+build-backend = "pdm.pep517.api"
+requires = ["pdm-pep517>=1.0.0"]
+
 [project]
-name = "inu_analyzer"
-version = "0.1.0"
-description = ""
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+authors = [{email = "julian.lf.olate@gmail.com", name = "olatejulian"}]
 dependencies = ["pydantic>=1.10.2"]
-requires-python = ">=3.12,<3.13"
+description = ""
+license = {text = "MIT"}
+name = "inu_analyzer"
 readme = "README.md"
-license = { text = "MIT" }
+requires-python = ">=3.12,<3.13"
+version = "0.1.0"
 
 [tool.pdm]
-
-[build-system]
-requires = ["pdm-pep517>=1.0.0"]
-build-backend = "pdm.pep517.api"

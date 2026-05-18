@@ -1,13 +1,13 @@
 [project]
 authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = [
-    "lagom>=2.6.0",
-    "pyinstaller>=6.8.0",
-    "pypdf>=4.3.0",
-    "pytube>=15.0.0",
-    "rpc",
-    "typer>=0.12.3",
-    "validators>=0.28.1",
+  "lagom>=2.6.0",
+  "pyinstaller>=6.8.0",
+  "pypdf>=4.3.0",
+  "pytube>=15.0.0",
+  "rpc",
+  "typer>=0.12.3",
+  "validators>=0.28.1",
 ]
 description = "An app to automate boring stuffs"
 license = { text = "MIT" }
@@ -15,13 +15,3 @@ name = "automaton"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 version = "0.0.0"
-
-[tool.pdm]
-distribution = true
-
-[tool.pdm.dev-dependencies]
-dev = []
-
-[tool.pdm.scripts]
-cli = { call = "automaton.__main__:cli" }
-mkbin = "pyinstaller -Fyn auto automaton/__main__.py"

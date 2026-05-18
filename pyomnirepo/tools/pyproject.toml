@@ -1,17 +1,9 @@
 [project]
-name = "tools"
-version = "0.0.0"
-description = "Default template for PDM package"
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = []
-requires-python = ">=3.12,<3.13"
-readme = "README.md"
+description = "Default template for PDM package"
 license = { text = "MIT" }
-
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
-
-[tool.pdm]
-distribution = true
+name = "tools"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+version = "0.0.0"

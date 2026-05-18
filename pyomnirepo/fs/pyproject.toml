@@ -1,17 +1,9 @@
 [project]
-name = "fs"
-version = "0.0.0"
-description = "A module to handle filesystem operations"
-authors = [{ name = "olatejulian", email = "julian.lf.olate@gmail.com" }]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = ["pydantic>=2.11.4", "xmltodict>=0.14.2"]
-requires-python = ">=3.12,<3.13"
-readme = "README.md"
+description = "A module to handle filesystem operations"
 license = { text = "MIT" }
-
-
-[tool.pdm]
-distribution = true
-
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+name = "fs"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+version = "0.0.0"

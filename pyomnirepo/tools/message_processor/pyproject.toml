@@ -1,15 +1,5 @@
-[tool.poetry]
-name = "message_processor"
-version = "0.1.0"
+[project]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 description = ""
-authors = ["olatejulian <julian.lf.olate@gmail.com>"]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+name = "message_processor"
+version = "0.0.0"
