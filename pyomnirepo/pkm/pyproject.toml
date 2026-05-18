@@ -1,1 +1,4 @@
-
+[project]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
+name = "pkm"
+version = "0.0.0"
