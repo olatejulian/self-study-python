@@ -1,11 +1,13 @@
-from typing import Any
+import sys
 
-from pyls.cli import pyls_cli
+from pyls.app.cli import typer_cli
 
 
-def main() -> Any:
-    return pyls_cli()
+def main():
+    typer_cli()
+
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
