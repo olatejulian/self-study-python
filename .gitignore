@@ -1,14 +1,12 @@
 __pycache__
+.coverage
 .history
 .mypy_cache
-.pdm-build
-.pdm-python
-.pdm.toml
+.pytest_cache
 .ruff_cache
 .venv
 .vscode
 *.egg-info
 *.spec
-*.sqlite3
 build
 dist
