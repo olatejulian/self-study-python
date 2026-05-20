@@ -1,0 +1,10 @@
+[dependency-groups]
+dev = []
+
+[project]
+dependencies = []
+description = "A graph implementation"
+
+name = "omni-graph"
+requires-python = ">=3.12,<3.13"
+version = "0.0.0"
