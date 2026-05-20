@@ -1,7 +1,7 @@
 # pylint: disable=pointless-statement
 import pytest
 
-from src.account import InvalidTimeException, Time
+from omni.aegispy.src.omni.aegispy.account import InvalidTimeException, Time
 
 
 def test_time_value_when_valid():

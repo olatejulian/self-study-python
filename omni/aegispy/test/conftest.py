@@ -7,7 +7,7 @@ import pytest_asyncio
 from fastapi import FastAPI
 from httpx import AsyncClient
 
-from src.account import (
+from omni.aegispy.src.omni.aegispy.account import (
     Account,
     AccountAuthenticator,
     AccountEmailSender,
@@ -26,7 +26,7 @@ from src.account import (
     Name,
     Password,
 )
-from src.app import (
+from omni.aegispy.src.omni.aegispy.app import (
     AppContainer,
     BeanieMongoDatabase,
     BeanieMongoDatabaseConfig,

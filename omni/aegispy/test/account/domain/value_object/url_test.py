@@ -1,4 +1,4 @@
-from src.account import Url
+from omni.aegispy.src.omni.aegispy.account import Url
 
 
 def test_url_when_is_valid():

@@ -1,6 +1,6 @@
 import pytest
 
-from src.account import (
+from omni.aegispy.src.omni.aegispy.account import (
     InvalidVerificationCodeException,
     InvalidVerificationCodeLengthException,
     VerificationCode,

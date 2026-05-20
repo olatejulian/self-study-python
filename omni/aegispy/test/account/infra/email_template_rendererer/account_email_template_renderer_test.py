@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from src.account import AccountEmailTemplateRenderer, Name, Url
+from omni.aegispy.src.omni.aegispy.account import AccountEmailTemplateRenderer, Name, Url
 
 
 def test_account_template_render_render_email_verification_template(

@@ -1,6 +1,6 @@
 import pytest
 
-from src.account import Id, InvalidIdException
+from omni.aegispy.src.omni.aegispy.account import Id, InvalidIdException
 
 
 def test_id_value_when_valid():

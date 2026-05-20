@@ -1,8 +1,8 @@
 import pytest
 from httpx import AsyncClient
 
-from src.account import Account, AccountRepository, EmailAddress
-from src.app import (
+from omni.aegispy.src.omni.aegispy.account import Account, AccountRepository, EmailAddress
+from omni.aegispy.src.omni.aegispy.app import (
     LOGIN_RESPONSE_MESSAGE,
     RESEND_VERIFICATION_EMAIL_RESPONSE_MESSAGE,
     SIGNUP_RESPONSE_MESSAGE,

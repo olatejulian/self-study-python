@@ -1,4 +1,4 @@
-from src.shared import Entity, Event
+from omni.aegispy.src.omni.aegispy.shared import Entity, Event
 
 
 class SimpleEvent(Event):
