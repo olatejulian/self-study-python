@@ -1,15 +1,14 @@
-# self-study-python
+# omnipy
 
-Welcome to the **self-study-python** monorepo! This repository is designed to serve as a comprehensive resource for learning and practicing Python programming. It contains various projects, scripts, and exercises that cover different aspects of Python, including foundational concepts, advanced techniques, and popular libraries and frameworks.
+Welcome to the **omnipy** monorepo! This repository is designed to serve as a comprehensive resource for learning and practicing Python programming. It contains various projects, scripts, and exercises that cover different aspects of Python, including foundational concepts, advanced techniques, and popular libraries and frameworks.
 
 ## Table of Contents
 
--   [Projects](#projects)
--   [Getting Started](#getting-started)
--   [Installation](#installation)
--   [Usage](#usage)
--   [Contributing](#contributing)
--   [License](#license)
+- [omnipy](#omnipy)
+  - [Table of Contents](#table-of-contents)
+  - [Projects](#projects)
+  - [Getting Started](#getting-started)
+  - [License](#license)
 
 ## Projects
 
@@ -23,11 +22,10 @@ The monorepo includes a variety of projects that are organized into different di
 
 ## Getting Started
 
-To get started with the `self-study-python` monorepo, you'll need to clone the repository to your local machine:
+To get started with the `omnipy` monorepo, you'll need to clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/olatejulian/self-study-python.git
-cd self-study-python
+git clone https://github.com/olatejulian/omnipy.git
 ```
 
 ## License
