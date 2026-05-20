@@ -1085,7 +1085,7 @@ wheels = [
 [[package]]
 name = "py-api-example"
 version = "0.0.0"
-source = { virtual = "omni/api-example" }
+source = { virtual = "omni/aegispy" }
 dependencies = [
     { name = "aiosmtplib" },
     { name = "beanie" },
