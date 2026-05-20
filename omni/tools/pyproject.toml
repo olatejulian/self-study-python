@@ -1,9 +1,0 @@
-[project]
-authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
-dependencies = []
-description = "Default template for PDM package"
-license = { text = "MIT" }
-name = "tools"
-readme = "README.md"
-requires-python = ">=3.12,<3.13"
-version = "0.0.0"
