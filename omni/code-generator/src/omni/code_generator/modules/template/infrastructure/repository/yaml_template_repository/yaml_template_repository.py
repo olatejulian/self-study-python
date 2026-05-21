@@ -27,7 +27,7 @@ class YamlTemplateRepository(TemplateRepository):
 
     def get(self, name: str) -> Template:
         try:
-            with open(self.__template_path(name), "r") as file:
+            with open(self.__template_path(name)) as file:
                 yaml_model = yaml.load(file, Loader=yaml.FullLoader)
 
                 template = Template(
@@ -48,6 +48,4 @@ class YamlTemplateRepository(TemplateRepository):
     def get_all(self) -> list[Template]:
         path = Path(self.__path)
 
-        return [
-            self.get(template.name) for template in path.iterdir() if template.is_file()
-        ]
+        return [self.get(template.name) for template in path.iterdir() if template.is_file()]

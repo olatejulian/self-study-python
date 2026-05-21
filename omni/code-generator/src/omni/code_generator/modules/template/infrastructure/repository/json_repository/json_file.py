@@ -1,13 +1,13 @@
 import json
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 Data = TypeVar("Data")
 
 
-class JsonFile(Generic[Data]):
+class JsonFile[Data]:
     @staticmethod
     def read(file_path: str) -> Data:
-        with open(file_path, "r") as file:
+        with open(file_path) as file:
             return json.load(file)
 
     @staticmethod

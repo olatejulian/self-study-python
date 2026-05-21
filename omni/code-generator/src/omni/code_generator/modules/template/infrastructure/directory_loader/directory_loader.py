@@ -13,9 +13,7 @@ class FSDirectoryLoader(DirectoryLoader):
 
         return Directory(
             name=path.name,
-            contents=[
-                cls.__load_sub_content(sub_content) for sub_content in path.iterdir()
-            ],
+            contents=[cls.__load_sub_content(sub_content) for sub_content in path.iterdir()],
         )
 
     @staticmethod
@@ -31,8 +29,7 @@ class FSDirectoryLoader(DirectoryLoader):
         directory_name = directory_path.name
 
         directory_contents = [
-            cls.__load_sub_content(sub_content)
-            for sub_content in directory_path.iterdir()
+            cls.__load_sub_content(sub_content) for sub_content in directory_path.iterdir()
         ]
 
         return Directory(name=directory_name, contents=directory_contents)

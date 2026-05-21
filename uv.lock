@@ -4,6 +4,7 @@ requires-python = "==3.12.*"
 
 [manifest]
 members = [
+    "aegispy",
     "automaton",
     "chronos",
     "code-generator",
@@ -12,17 +13,91 @@ members = [
     "ltx",
     "mdpack",
     "mlops",
-    "omni",
     "omni-graph",
     "pdf",
     "pkm",
-    "py-api-example",
     "pyls",
     "python-seedwork",
     "rpc",
     "storage",
     "url-shortener",
     "video",
+]
+
+[manifest.dependency-groups]
+dev = [
+    { name = "mypy", specifier = ">=1.17.0" },
+    { name = "pyright", specifier = ">=1.1.403" },
+    { name = "pytest", specifier = ">=9.0.3" },
+    { name = "pytest-asyncio", specifier = ">=1.3.0" },
+    { name = "pytest-cov", specifier = ">=7.1.0" },
+    { name = "pytest-timeout", specifier = ">=2.4.0" },
+    { name = "pytest-xdist", specifier = ">=3.8.0" },
+    { name = "ruff", specifier = ">=0.12.5" },
+    { name = "toml-sort", specifier = ">=0.23.1" },
+]
+
+[[package]]
+name = "aegispy"
+version = "0.0.0"
+source = { editable = "omni/aegispy" }
+dependencies = [
+    { name = "aiosmtplib" },
+    { name = "beanie" },
+    { name = "email-validator" },
+    { name = "fastapi" },
+    { name = "flower" },
+    { name = "jinja2" },
+    { name = "motor" },
+    { name = "passlib", extra = ["bcrypt"] },
+    { name = "pendulum" },
+    { name = "pydantic" },
+    { name = "python-dotenv" },
+    { name = "python-jose", extra = ["cryptography"] },
+    { name = "python-multipart" },
+    { name = "uvicorn" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "beautifulsoup4" },
+    { name = "httpx" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "pytest-cov" },
+    { name = "python-semantic-release" },
+    { name = "types-passlib" },
+    { name = "watchdog" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "aiosmtplib", specifier = ">=2.0.2" },
+    { name = "beanie", specifier = ">=1.17.0" },
+    { name = "email-validator", specifier = ">=2.0.0.post2" },
+    { name = "fastapi", specifier = ">=0.95.1" },
+    { name = "flower", specifier = ">=2.0.0" },
+    { name = "jinja2", specifier = ">=3.1.2" },
+    { name = "motor", specifier = ">=3.1.1" },
+    { name = "passlib", extras = ["bcrypt"], specifier = ">=1.7.4" },
+    { name = "pendulum", specifier = ">=2.1.2" },
+    { name = "pydantic", specifier = ">=1.10.7" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
+    { name = "python-jose", extras = ["cryptography"], specifier = ">=3.3.0" },
+    { name = "python-multipart", specifier = ">=0.0.6" },
+    { name = "uvicorn", specifier = ">=0.22.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "beautifulsoup4", specifier = ">=4.12.2" },
+    { name = "httpx", specifier = ">=0.24.1" },
+    { name = "pytest", specifier = ">=7.4.0" },
+    { name = "pytest-asyncio", specifier = ">=0.21.0" },
+    { name = "pytest-cov", specifier = ">=4.1.0" },
+    { name = "python-semantic-release", specifier = ">=7.34.3" },
+    { name = "types-passlib", specifier = ">=1.7.7.12" },
+    { name = "watchdog", specifier = ">=3.0.0" },
 ]
 
 [[package]]
@@ -113,7 +188,7 @@ wheels = [
 [[package]]
 name = "automaton"
 version = "0.0.0"
-source = { virtual = "omni/automaton" }
+source = { editable = "omni/automaton" }
 dependencies = [
     { name = "lagom" },
     { name = "pyinstaller" },
@@ -291,7 +366,7 @@ wheels = [
 [[package]]
 name = "chronos"
 version = "0.0.0"
-source = { virtual = "omni/chronos" }
+source = { editable = "omni/chronos" }
 
 [[package]]
 name = "click"
@@ -357,7 +432,7 @@ wheels = [
 [[package]]
 name = "code-generator"
 version = "0.0.0"
-source = { virtual = "omni/code-generator" }
+source = { editable = "omni/code-generator" }
 dependencies = [
     { name = "jinja2" },
     { name = "pydantic" },
@@ -417,7 +492,7 @@ wheels = [
 [[package]]
 name = "cqrs"
 version = "0.0.0"
-source = { virtual = "omni/cqrs" }
+source = { editable = "omni/cqrs" }
 
 [[package]]
 name = "cryptography"
@@ -575,7 +650,7 @@ wheels = [
 [[package]]
 name = "fs"
 version = "0.0.0"
-source = { virtual = "omni/fs" }
+source = { editable = "omni/fs" }
 dependencies = [
     { name = "pydantic" },
     { name = "xmltodict" },
@@ -613,20 +688,20 @@ wheels = [
 
 [[package]]
 name = "greenlet"
-version = "3.5.0"
+version = "3.5.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3c/3f/dbf99fb14bfeb88c28f16729215478c0e265cacd6dc22270c8f31bb6892f/greenlet-3.5.0.tar.gz", hash = "sha256:d419647372241bc68e957bf38d5c1f98852155e4146bd1e4121adea81f4f01e4", size = 196995, upload-time = "2026-04-27T13:37:15.544Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6d/6e/802acd792aebb2256fbbee8cacf2727faaeb6f240ac11008f09eae4414bc/greenlet-3.5.1.tar.gz", hash = "sha256:5a56aeb7d5d9cc4b3a735efb5095bd4b4f6f0e4f93e5ca876d0e2315137b7829", size = 197356, upload-time = "2026-05-20T15:05:03.917Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ef/32/f2ce6d4cac3e55bc6173f92dbe627e782e1850f89d986c3606feb63aafa7/greenlet-3.5.0-cp312-cp312-macosx_11_0_universal2.whl", hash = "sha256:db2910d3c809444e0a20147361f343fe2798e106af8d9d8506f5305302655a9f", size = 286228, upload-time = "2026-04-27T12:20:34.421Z" },
-    { url = "https://files.pythonhosted.org/packages/b7/aa/caed9e5adf742315fc7be2a84196373aab4816e540e38ba0d76cb7584d68/greenlet-3.5.0-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:3ec9ea74e7268ace7f9aab1b1a4e730193fc661b39a993cd91c606c32d4a3628", size = 601775, upload-time = "2026-04-27T12:52:41.045Z" },
-    { url = "https://files.pythonhosted.org/packages/c7/af/90ae08497400a941595d12774447f752d3dfe0fbb012e35b76bc5c0ff37e/greenlet-3.5.0-cp312-cp312-manylinux_2_24_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:54d243512da35485fc7a6bf3c178fdda6327a9d6506fcdd62b1abd1e41b2927b", size = 614436, upload-time = "2026-04-27T12:59:41.595Z" },
-    { url = "https://files.pythonhosted.org/packages/3f/e9/4eeadf8cb3403ac274245ba75f07844abc7fa5f6787583fc9156ba741e0f/greenlet-3.5.0-cp312-cp312-manylinux_2_24_s390x.manylinux_2_28_s390x.whl", hash = "sha256:41353ec2ecedf7aa8f682753a41919f8718031a6edac46b8d3dc7ed9e1ceb136", size = 620610, upload-time = "2026-04-27T13:02:39.194Z" },
-    { url = "https://files.pythonhosted.org/packages/2b/e0/2e13df68f367e2f9960616927d60857dd7e56aaadd59a47c644216b2f920/greenlet-3.5.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9d280a7f5c331622c69f97eb167f33577ff2d1df282c41cd15907fc0a3ca198c", size = 611388, upload-time = "2026-04-27T12:25:28.008Z" },
-    { url = "https://files.pythonhosted.org/packages/ee/ef/f913b3c0eb7d26d86a2401c5e1546c9d46b657efee724b06f6f4ac5d8824/greenlet-3.5.0-cp312-cp312-manylinux_2_39_riscv64.whl", hash = "sha256:58c1c374fe2b3d852f9b6b11a7dff4c85404e51b9a596fd9e89cf904eb09866d", size = 422775, upload-time = "2026-04-27T13:05:14.261Z" },
-    { url = "https://files.pythonhosted.org/packages/82/f7/393c64055132ac0d488ef6be549253b7e6274194863967ddc0bc8f5b87b8/greenlet-3.5.0-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:1eb67d5adefb5bd2e182d42678a328979a209e4e82eb93575708185d31d1f588", size = 1570768, upload-time = "2026-04-27T12:53:28.099Z" },
-    { url = "https://files.pythonhosted.org/packages/b8/4b/eaf7735253522cf56d1b74d672a58f54fc114702ceaf05def59aae72f6e1/greenlet-3.5.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:2628d6c86f6cb0cb45e0c3c54058bbec559f57eaae699447748cb3928150577e", size = 1635983, upload-time = "2026-04-27T12:25:26.903Z" },
-    { url = "https://files.pythonhosted.org/packages/4c/fe/4fb3a0805bd5165da5ebf858da7cc01cce8061674106d2cf5bdab32cbfde/greenlet-3.5.0-cp312-cp312-win_amd64.whl", hash = "sha256:d4d9f0624c775f2dfc56ba54d515a8c771044346852a918b405914f6b19d7fd8", size = 238840, upload-time = "2026-04-27T12:23:54.806Z" },
-    { url = "https://files.pythonhosted.org/packages/cb/cb/baa584cb00532126ffe12d9787db0a60c5a4f55c27bfe2666df5d4c30a32/greenlet-3.5.0-cp312-cp312-win_arm64.whl", hash = "sha256:83ed9f27f1680b50e89f40f6df348a290ea234b249a4003d366663a12eab94f2", size = 235615, upload-time = "2026-04-27T12:21:38.57Z" },
+    { url = "https://files.pythonhosted.org/packages/c4/37/4549f149c9797c21b32c2683c33522af22522099de128b2406672526d005/greenlet-3.5.1-cp312-cp312-macosx_11_0_universal2.whl", hash = "sha256:fa4f98af3a528f0c3fd592a26df7f376f93329c8f4d987f6bb979057af8bf5e2", size = 286220, upload-time = "2026-05-20T13:07:28.463Z" },
+    { url = "https://files.pythonhosted.org/packages/38/ff/a4f436709716965eaab9f36ea7b906c8a927fbe32fb1372a2071d964f6b1/greenlet-3.5.1-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:ffea73584b216150eab159b6d12348fb253e68757974de1e2c40d8a318ac89ed", size = 601585, upload-time = "2026-05-20T14:00:06.141Z" },
+    { url = "https://files.pythonhosted.org/packages/65/ad/54bc3fcee3ad368a61b19b67d88117f7a8c29727bf71fffdeda81fbd946e/greenlet-3.5.1-cp312-cp312-manylinux_2_24_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:1072b4f9edcc1e192d9283a66a3e68d6b84c561de33a83d7858beb9ba1effe10", size = 614215, upload-time = "2026-05-20T14:05:42.675Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/6c/de5b1b388cd2d9fbdfeab324863daba37d54e6e233ddbefd70b385a8c591/greenlet-3.5.1-cp312-cp312-manylinux_2_24_s390x.manylinux_2_28_s390x.whl", hash = "sha256:89101bfd5011e069be974903cb3a4e4523845e4ece2d62dcd8d358933c0ef249", size = 620094, upload-time = "2026-05-20T14:09:09.18Z" },
+    { url = "https://files.pythonhosted.org/packages/40/69/b91cda0647df839483201545913514c2827ebea5e5ccdf931842763bc127/greenlet-3.5.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:add5217d68b31130f0beca584d7fef4878327d2e31642b66618a14eef312b63b", size = 611358, upload-time = "2026-05-20T13:14:26.37Z" },
+    { url = "https://files.pythonhosted.org/packages/4a/43/1204baffab8a6476464795a7ccf394a3248d4f22c9f87173a15b36b6d971/greenlet-3.5.1-cp312-cp312-manylinux_2_39_riscv64.whl", hash = "sha256:e6cd99ea59dd5d89f0c956606571d79bfe6f68c9eb7f4a4083a41a7f1587edee", size = 422782, upload-time = "2026-05-20T14:01:39.597Z" },
+    { url = "https://files.pythonhosted.org/packages/59/90/3cf77e080350cd02fa307bb2abf05df48f4482c240275bbd2c203ba8bb1c/greenlet-3.5.1-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:a5ea42a752d47a145eae922b605cd1634665ac3d5ec1e72402d5048e8d60d207", size = 1570475, upload-time = "2026-05-20T14:02:25.29Z" },
+    { url = "https://files.pythonhosted.org/packages/65/2c/18cece62045e74598c3c393f70dce4a63f56222015ba29a5d4eeb04f764c/greenlet-3.5.1-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:c5551170cf4f5ff5623e9af81323751979fee2c731e2287b61f73cd27257b823", size = 1635625, upload-time = "2026-05-20T13:14:34.027Z" },
+    { url = "https://files.pythonhosted.org/packages/30/f5/310d104ddf41eb5a70f4c268d22508dfb0c3c8e86fec152be34d0d2ed819/greenlet-3.5.1-cp312-cp312-win_amd64.whl", hash = "sha256:3c8bb982ad117d29478ef8f5533e97df21f1e2befd17a299257b0c96d1371c0b", size = 238791, upload-time = "2026-05-20T13:10:39.018Z" },
+    { url = "https://files.pythonhosted.org/packages/62/90/ceca11f504cd23a8047a3dea31919adc48df9b626dd0c13f0d858734fdfd/greenlet-3.5.1-cp312-cp312-win_arm64.whl", hash = "sha256:80eb4b04dadc4e67df3fae179a32c4706a3f495bc7f22fc8a81115d5f5512188", size = 235580, upload-time = "2026-05-20T13:08:45.056Z" },
 ]
 
 [[package]]
@@ -778,7 +853,7 @@ wheels = [
 [[package]]
 name = "ltx"
 version = "0.0.0"
-source = { virtual = "omni/ltx" }
+source = { editable = "omni/ltx" }
 dependencies = [
     { name = "dependency-injector" },
     { name = "pydantic" },
@@ -838,7 +913,7 @@ wheels = [
 [[package]]
 name = "mdpack"
 version = "0.0.0"
-source = { virtual = "omni/mdpack" }
+source = { editable = "omni/mdpack" }
 dependencies = [
     { name = "pathspec" },
     { name = "typer" },
@@ -870,7 +945,7 @@ wheels = [
 [[package]]
 name = "mlops"
 version = "0.0.0"
-source = { virtual = "omni/mlops" }
+source = { editable = "omni/mlops" }
 
 [[package]]
 name = "motor"
@@ -926,42 +1001,9 @@ wheels = [
 ]
 
 [[package]]
-name = "omni"
-version = "0.0.0"
-source = { virtual = "." }
-
-[package.dev-dependencies]
-dev = [
-    { name = "mypy" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-    { name = "pytest-timeout" },
-    { name = "pytest-xdist" },
-    { name = "ruff" },
-    { name = "toml-sort" },
-]
-
-[package.metadata]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "mypy", specifier = ">=1.17.0" },
-    { name = "pyright", specifier = ">=1.1.403" },
-    { name = "pytest", specifier = ">=9.0.3" },
-    { name = "pytest-asyncio", specifier = ">=1.3.0" },
-    { name = "pytest-cov", specifier = ">=7.1.0" },
-    { name = "pytest-timeout", specifier = ">=2.4.0" },
-    { name = "pytest-xdist", specifier = ">=3.8.0" },
-    { name = "ruff", specifier = ">=0.12.5" },
-    { name = "toml-sort", specifier = ">=0.23.1" },
-]
-
-[[package]]
 name = "omni-graph"
 version = "0.0.0"
-source = { virtual = "omni/graph" }
+source = { editable = "omni/graph" }
 
 [package.metadata]
 
@@ -1003,7 +1045,7 @@ wheels = [
 [[package]]
 name = "pdf"
 version = "0.0.0"
-source = { virtual = "omni/pdf" }
+source = { editable = "omni/pdf" }
 dependencies = [
     { name = "pypdf" },
     { name = "typer" },
@@ -1050,7 +1092,7 @@ wheels = [
 [[package]]
 name = "pkm"
 version = "0.0.0"
-source = { virtual = "omni/pkm" }
+source = { editable = "omni/pkm" }
 
 [[package]]
 name = "pluggy"
@@ -1080,69 +1122,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/a1/96/06e01a7b38dce6fe1db213e061a4602dd6032a8a97ef6c1a862537732421/prompt_toolkit-3.0.52.tar.gz", hash = "sha256:28cde192929c8e7321de85de1ddbe736f1375148b02f2e17edd840042b1be855", size = 434198, upload-time = "2025-08-27T15:24:02.057Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/84/03/0d3ce49e2505ae70cf43bc5bb3033955d2fc9f932163e84dc0779cc47f48/prompt_toolkit-3.0.52-py3-none-any.whl", hash = "sha256:9aac639a3bbd33284347de5ad8d68ecc044b91a762dc39b7c21095fcd6a19955", size = 391431, upload-time = "2025-08-27T15:23:59.498Z" },
-]
-
-[[package]]
-name = "py-api-example"
-version = "0.0.0"
-source = { virtual = "omni/aegispy" }
-dependencies = [
-    { name = "aiosmtplib" },
-    { name = "beanie" },
-    { name = "email-validator" },
-    { name = "fastapi" },
-    { name = "flower" },
-    { name = "jinja2" },
-    { name = "motor" },
-    { name = "passlib", extra = ["bcrypt"] },
-    { name = "pendulum" },
-    { name = "pydantic" },
-    { name = "python-dotenv" },
-    { name = "python-jose", extra = ["cryptography"] },
-    { name = "python-multipart" },
-    { name = "uvicorn" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "beautifulsoup4" },
-    { name = "httpx" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-    { name = "python-semantic-release" },
-    { name = "types-passlib" },
-    { name = "watchdog" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "aiosmtplib", specifier = ">=2.0.2" },
-    { name = "beanie", specifier = ">=1.17.0" },
-    { name = "email-validator", specifier = ">=2.0.0.post2" },
-    { name = "fastapi", specifier = ">=0.95.1" },
-    { name = "flower", specifier = ">=2.0.0" },
-    { name = "jinja2", specifier = ">=3.1.2" },
-    { name = "motor", specifier = ">=3.1.1" },
-    { name = "passlib", extras = ["bcrypt"], specifier = ">=1.7.4" },
-    { name = "pendulum", specifier = ">=2.1.2" },
-    { name = "pydantic", specifier = ">=1.10.7" },
-    { name = "python-dotenv", specifier = ">=1.0.0" },
-    { name = "python-jose", extras = ["cryptography"], specifier = ">=3.3.0" },
-    { name = "python-multipart", specifier = ">=0.0.6" },
-    { name = "uvicorn", specifier = ">=0.22.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "beautifulsoup4", specifier = ">=4.12.2" },
-    { name = "httpx", specifier = ">=0.24.1" },
-    { name = "pytest", specifier = ">=7.4.0" },
-    { name = "pytest-asyncio", specifier = ">=0.21.0" },
-    { name = "pytest-cov", specifier = ">=4.1.0" },
-    { name = "python-semantic-release", specifier = ">=7.34.3" },
-    { name = "types-passlib", specifier = ">=1.7.7.12" },
-    { name = "watchdog", specifier = ">=3.0.0" },
 ]
 
 [[package]]
@@ -1460,7 +1439,7 @@ wheels = [
 [[package]]
 name = "python-seedwork"
 version = "0.0.0"
-source = { virtual = "omni/seedwork" }
+source = { editable = "omni/seedwork" }
 dependencies = [
     { name = "pendulum" },
     { name = "pydantic" },
@@ -1706,7 +1685,7 @@ wheels = [
 [[package]]
 name = "storage"
 version = "0.0.0"
-source = { virtual = "omni/storage" }
+source = { editable = "omni/storage" }
 dependencies = [
     { name = "fastapi" },
     { name = "python-dotenv" },
@@ -1829,7 +1808,7 @@ wheels = [
 [[package]]
 name = "url-shortener"
 version = "0.0.0"
-source = { virtual = "omni/url_shortener" }
+source = { editable = "omni/url-shortener" }
 
 [[package]]
 name = "urllib3"
@@ -1865,7 +1844,7 @@ wheels = [
 [[package]]
 name = "video"
 version = "0.0.0"
-source = { virtual = "omni/video" }
+source = { editable = "omni/video" }
 dependencies = [
     { name = "typer" },
 ]

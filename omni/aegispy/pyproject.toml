@@ -34,7 +34,7 @@ dependencies = [
 ]
 description = "A simple example of a Python API using FastAPI and Beanie"
 license = { text = "MIT" }
-name = "py-api-example"
+name = "aegispy"
 requires-python = ">=3.12,<3.13"
 version = "0.0.0"
 

@@ -18,8 +18,6 @@ class ProjectService:
                 "version": dto.version,
                 "author": dto.author,
                 "author_email": dto.author_email,
-                "template": self.__template_service.get_template_by_name(
-                    dto.template_name
-                ),
+                "template": self.__template_service.get_template_by_name(dto.template_name),
             }
         )
