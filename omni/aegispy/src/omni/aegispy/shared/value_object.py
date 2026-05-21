@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 ValueType = TypeVar("ValueType")  # pylint: disable=invalid-name
 
@@ -17,7 +17,7 @@ class ValueValidator:
             raise self.exception
 
 
-class ValueObject(Generic[ValueType]):
+class ValueObject[ValueType]:
     def __init__(self, value: ValueType, validators: list[ValueValidator]) -> None:
         self.value = value
 

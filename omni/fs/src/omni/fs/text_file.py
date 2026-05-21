@@ -15,5 +15,4 @@ class TextFile(File[str]):
             f.write(data)
 
     def read_lines(self) -> Iterable[str]:
-        for line in self._path.read_text("utf-8").splitlines():
-            yield line
+        yield from self._path.read_text("utf-8").splitlines()

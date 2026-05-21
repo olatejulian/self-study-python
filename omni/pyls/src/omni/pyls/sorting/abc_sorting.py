@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 KeyType = TypeVar("KeyType")
 
 
-class SortStrategy(ABC, Generic[KeyType]):
+class SortStrategy[KeyType](ABC):
     @abstractmethod
     def key(self, path: Path) -> KeyType: ...

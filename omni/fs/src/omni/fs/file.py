@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 T = TypeVar("T")
 
 
-class File(ABC, Generic[T]):
+class File[T](ABC):
     def __init__(self, path: Path):
         self._path = path
 

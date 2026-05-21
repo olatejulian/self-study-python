@@ -27,15 +27,4 @@ class FilesMetadataModel(SQLBaseModel):
         self.create_at = create_at
 
     def __repr__(self):
-        return (
-            "<FileMetadata(name='%s', path='%s', url_path='%s', client_id='%s', expire_at='%s', updated_at='%s', create_at='%s')>"
-            % (
-                self.name,
-                self.path,
-                self.url_path,
-                self.client_id,
-                self.expire_at,
-                self.updated_at,
-                self.create_at,
-            )
-        )
+        return f"<FileMetadata(name='{self.name}', path='{self.path}', url_path='{self.url_path}', client_id='{self.client_id}', expire_at='{self.expire_at}', updated_at='{self.updated_at}', create_at='{self.create_at}')>"

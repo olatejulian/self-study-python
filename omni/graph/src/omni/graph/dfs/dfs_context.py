@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 T = TypeVar("T")
 
 
 @dataclass(slots=True, frozen=True)
-class DFSContext(Generic[T]):
+class DFSContext[T]:
     node: T
 
     depth: int

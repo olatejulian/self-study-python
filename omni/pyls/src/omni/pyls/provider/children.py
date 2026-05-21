@@ -20,5 +20,4 @@ class ChildrenCallbackProvider:
 
         sorted_entries = sorted(filtered_entries, key=self.__sorter.key)
 
-        for entry in sorted_entries:
-            yield entry
+        yield from sorted_entries

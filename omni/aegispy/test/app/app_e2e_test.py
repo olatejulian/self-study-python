@@ -135,9 +135,7 @@ async def test_login(
         account = await account_repository.get_by_email(EmailAddress(email))
 
         verification_code = (
-            account.email.verification_code.value
-            if account.email.verification_code
-            else None
+            account.email.verification_code.value if account.email.verification_code else None
         )
 
         verify_query_params = {

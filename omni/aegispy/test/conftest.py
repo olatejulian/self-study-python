@@ -1,5 +1,5 @@
 # pylint: disable=redefined-outer-name
-from typing import AsyncGenerator
+from collections.abc import AsyncGenerator
 from uuid import uuid4
 
 import pytest
@@ -95,9 +95,7 @@ def fake_account_email_sender() -> AccountEmailSender:
 
 
 @pytest.fixture
-def app(
-    database: BeanieMongoDatabase, fake_account_email_sender: AccountEmailSender
-) -> FastAPI:
+def app(database: BeanieMongoDatabase, fake_account_email_sender: AccountEmailSender) -> FastAPI:
     container = AppContainer()
 
     container.database.override(database)

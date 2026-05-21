@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 DataType = TypeVar("DataType")  # pylint: disable=invalid-name
 
@@ -8,7 +8,7 @@ class Query:
     pass
 
 
-class QueryResponse(Generic[DataType]):
+class QueryResponse[DataType]:
     def __init__(self, data: DataType):
         self.data = data
 

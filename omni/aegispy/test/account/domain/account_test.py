@@ -23,9 +23,7 @@ def test_account_create_staticmethod():
     password = "123456"
 
     entity = Account.create(
-        AccountInputDto(
-            name=Name(name), email=EmailAddress(email), password=Password(password)
-        )
+        AccountInputDto(name=Name(name), email=EmailAddress(email), password=Password(password))
     )
 
     # then
@@ -168,7 +166,7 @@ def test_account_verify_email_method_when_when_the_verification_code_has_expired
     code = entity.generate_verification_code()
 
     if entity.email.verification_code_sent_on is None:
-        assert False
+        raise AssertionError()
 
     entity.email.verification_code_sent_on.value = (
         entity.email.verification_code_sent_on.value - 3600
@@ -309,7 +307,7 @@ def test_account_reset_password_method_when_when_the_reset_verification_code_has
     reset_code = entity.generate_reset_password_code()
 
     if entity.password.reset_verification_code_sent_on is None:
-        assert False
+        raise AssertionError()
 
     entity.password.reset_verification_code_sent_on.value = (
         entity.password.reset_verification_code_sent_on.value - 3600

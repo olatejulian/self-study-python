@@ -1,6 +1,6 @@
 # pylint: disable=invalid-name
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 from ....shared.command import Command, CommandHandler
 
@@ -18,7 +18,7 @@ class CommandDoesNotHaveHandlerException(Exception):
     pass
 
 
-class CommandBus(ABC, Generic[CommandType, CommandHandlerResponseType]):
+class CommandBus[CommandType: Command, CommandHandlerResponseType](ABC):
     def __init__(self, handlers: dict[type[CommandType], CommandHandler]):
         self.handlers = handlers
 

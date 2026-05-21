@@ -30,9 +30,7 @@ def test_account_template_render_render_email_verification_template(
 
     assert account_name_in_template.text == account_name
 
-    email_verification_url_in_template = soup.find_all(
-        "a", {"class": "email-verification-url"}
-    )
+    email_verification_url_in_template = soup.find_all("a", {"class": "email-verification-url"})
 
     for tag in email_verification_url_in_template:
         assert tag["href"] == email_verification_url

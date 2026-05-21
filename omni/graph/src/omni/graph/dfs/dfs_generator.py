@@ -1,5 +1,5 @@
 from collections.abc import Generator
-from typing import TypeAlias, TypeVar
+from typing import TypeVar
 
 from .dfs_command import DFSCommand
 from .dfs_event import DFSEvent
@@ -7,7 +7,7 @@ from .dfs_event import DFSEvent
 T = TypeVar("T")
 
 
-DFSGenerator: TypeAlias = Generator[
+type DFSGenerator[T] = Generator[
     DFSEvent[T],
     DFSCommand | None,
     None,

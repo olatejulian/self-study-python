@@ -1,4 +1,4 @@
-from typing import Any, Generic, TypeVar
+from typing import Any, TypeVar
 
 from pydantic.generics import GenericModel
 
@@ -19,9 +19,11 @@ class SchemaExtraConfig:
     def override_schema_extra_example(
         cls,
         status_code: int | None = None,
-        data: dict[str, str] = {},
+        data: dict[str, str] = None,
         message: str | None = None,
     ) -> dict[str, Any]:
+        if data is None:
+            data = {}
         override_schema_extra_example = {
             "status_code": status_code,
             "message": message,
@@ -40,7 +42,7 @@ class SchemaExtraConfig:
         return schema_extra
 
 
-class APIResponse(GenericModel, Generic[HTTPResponseDataType]):
+class APIResponse[HTTPResponseDataType](GenericModel):
     status_code: int
     message: str
     data: dict[str, Any] | HTTPResponseDataType = {}

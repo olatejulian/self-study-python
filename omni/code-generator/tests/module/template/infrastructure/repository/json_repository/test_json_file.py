@@ -11,7 +11,7 @@ def test_json_file_write():
 
     JsonFile.write(file_path, data)
 
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         assert json.load(file) == data
 
     os.remove(file_path)

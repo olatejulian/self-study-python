@@ -1,7 +1,8 @@
+from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum, auto
 from pathlib import Path
-from typing import Iterator, Protocol
+from typing import Protocol
 
 from pathspec import PathSpec
 

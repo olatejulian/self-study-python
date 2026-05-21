@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 from ..node import Node
 from .dfs_command import SkipChildren, StopTraversal
@@ -10,7 +10,7 @@ from .dfs_validator import DFSValidator
 T = TypeVar("T", bound=Node)
 
 
-class DFSEngine(Generic[T]):
+class DFSEngine[T: Node]:
     def __init__(self) -> None:
         self.__validator = DFSValidator[T]()
 

@@ -43,10 +43,7 @@ class UserModel(SQLBaseModel):
         self.created_at = created_at
 
     def __repr__(self):
-        return (
-            "<User(username='%s', name='%s', email='%s', password=*****, updated_at=%s, created_at='%s')>"
-            % (self.username, self.name, self.email, self.updated_at, self.created_at)
-        )
+        return f"<User(username='{self.username}', name='{self.name}', email='{self.email}', password=*****, updated_at={self.updated_at}, created_at='{self.created_at}')>"
 
     def validate_password(self, password):
         return bcrypt.verify(password, self.password)

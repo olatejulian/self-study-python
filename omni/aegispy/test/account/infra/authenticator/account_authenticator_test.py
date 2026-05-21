@@ -151,9 +151,7 @@ async def test_get_current_account_with_valid_token(
 
     authenticator = account_authenticator
 
-    access_token_dto = await authenticator.authenticate(
-        entity.email.address, plain_password
-    )
+    access_token_dto = await authenticator.authenticate(entity.email.address, plain_password)
 
     # when
     entity_got = await authenticator.get_current_account(access_token_dto.access_token)

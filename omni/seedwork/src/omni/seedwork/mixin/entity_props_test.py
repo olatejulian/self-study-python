@@ -2,8 +2,7 @@ import uuid
 
 import pendulum
 import pytest
-
-from omni.seedwork.src.omni.seedwork.mixin.entity_props import EntityPropsMixin
+from omni.seedwork.mixin.entity_props import EntityPropsMixin
 
 
 @pytest.fixture
