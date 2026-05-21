@@ -1,5 +1,12 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
 [project]
 authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 description = ""
 name = "mlops"
 version = "0.0.0"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/omni"]

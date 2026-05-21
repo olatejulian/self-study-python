@@ -1,9 +1,16 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
 [project]
-authors = [{email = "julian.lf.olate@gmail.com", name = "olatejulian"}]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = []
 description = "A module to handle rpc calls"
-license = {text = "MIT"}
+license = { text = "MIT" }
 name = "rpc"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 version = "0.0.0"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/omni"]

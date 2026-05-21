@@ -1,14 +1,21 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
 [project]
-authors = [{email = "julian.lf.olate@gmail.com", name = "olatejulian"}]
+authors = [{ email = "julian.lf.olate@gmail.com", name = "olatejulian" }]
 dependencies = [
   "SQLAlchemy>=1.4.36",
   "fastapi>=0.78.0",
   "python-dotenv>=0.20.0",
-  "python-interface>=1.6.1"
+  "python-interface>=1.6.1",
 ]
 description = ""
-license = {text = "MIT"}
+license = { text = "MIT" }
 name = "storage"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 version = "0.0.0"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/omni"]
