@@ -1,4 +1,8 @@
-from omni.aegispy.src.omni.aegispy.account.domain import AccountRepository, EmailAddress, VerificationCode
+from omni.aegispy.src.omni.aegispy.account.domain import (
+    AccountRepository,
+    EmailAddress,
+    VerificationCode,
+)
 from omni.aegispy.src.omni.aegispy.shared import Command, CommandHandler
 
 

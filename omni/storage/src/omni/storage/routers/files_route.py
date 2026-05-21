@@ -1,12 +1,12 @@
 from fastapi import APIRouter
 
-from ..utils.app_types import Id
-from ..services.files_service import FilesService
 from ..schemas.file_metadata_schema import (
-    FileSavedInfo,
     FileMetadataCreate,
     FileMetadataUpdate,
+    FileSavedInfo,
 )
+from ..services.files_service import FilesService
+from ..utils.app_types import Id
 
 router = APIRouter(prefix="/files", tags=["Files"])
 service = FilesService()

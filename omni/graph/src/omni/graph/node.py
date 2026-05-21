@@ -1,4 +1,5 @@
-from typing import Iterator, Protocol, Self
+from collections.abc import Iterator
+from typing import Protocol, Self
 
 
 class Node(Protocol):

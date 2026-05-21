@@ -1,8 +1,8 @@
 from collections import deque
+from collections.abc import Callable, Iterable, Iterator
 from dataclasses import dataclass
 from enum import Enum, auto
 from pathlib import Path
-from typing import Callable, Deque, Iterable, Iterator, Optional
 
 from omni.pyls.src.omni.pyls.traversal.abc_traversal import TraversalStrategy
 
@@ -29,9 +29,9 @@ class DepthFirstStrategy(TraversalStrategy[DepthTraversalEvent]):
         callback: Callback,
         max_depth: int,
     ) -> None:
-        self._stack: list[
-            tuple[Path, Optional[Iterator[Path]], int, DepthTraversalState]
-        ] = [(root, None, 0, DepthTraversalState.ENTER_DIR)]
+        self._stack: list[tuple[Path, Iterator[Path] | None, int, DepthTraversalState]] = [
+            (root, None, 0, DepthTraversalState.ENTER_DIR)
+        ]
         self._callback = callback
         self._max_depth = max_depth
 
@@ -50,9 +50,7 @@ class DepthFirstStrategy(TraversalStrategy[DepthTraversalEvent]):
                 # schedule children iterator
                 if self._max_depth < 0 or depth < self._max_depth:
                     children_iter = iter(self._callback(node))
-                    self._stack.append(
-                        (node, children_iter, depth, DepthTraversalState.FILE)
-                    )
+                    self._stack.append((node, children_iter, depth, DepthTraversalState.FILE))
                 return DepthTraversalEvent(node, DepthTraversalState.ENTER_DIR, depth)
 
             # CHILDREN iterator handler
@@ -63,19 +61,13 @@ class DepthFirstStrategy(TraversalStrategy[DepthTraversalEvent]):
                     continue
 
                 # push back same iterator
-                self._stack.append(
-                    (node, children_iter, depth, DepthTraversalState.FILE)
-                )
+                self._stack.append((node, children_iter, depth, DepthTraversalState.FILE))
 
                 # now schedule child
                 if child.is_dir():
-                    self._stack.append(
-                        (child, None, depth + 1, DepthTraversalState.ENTER_DIR)
-                    )
+                    self._stack.append((child, None, depth + 1, DepthTraversalState.ENTER_DIR))
                 else:
-                    return DepthTraversalEvent(
-                        child, DepthTraversalState.FILE, depth + 1
-                    )
+                    return DepthTraversalEvent(child, DepthTraversalState.FILE, depth + 1)
                 continue
 
             # EXIT_DIR
@@ -100,11 +92,11 @@ class BreadthTraversalEvent:
 
 class BreadthFirstStrategy(TraversalStrategy[BreadthTraversalEvent]):
     def __init__(self, root: Path, callback: Callback, max_depth: int) -> None:
-        self._queue: Deque[tuple[Path, int]] = deque([(root, 0)])
+        self._queue: deque[tuple[Path, int]] = deque([(root, 0)])
         self._callback = callback
         self._max_depth = max_depth
 
-        self._pending_files: Deque[BreadthTraversalEvent] = deque()
+        self._pending_files: deque[BreadthTraversalEvent] = deque()
         self._pending_exit: BreadthTraversalEvent | None = None
 
     def __iter__(self):
@@ -125,9 +117,7 @@ class BreadthFirstStrategy(TraversalStrategy[BreadthTraversalEvent]):
         node, depth = self._queue.popleft()
 
         # Schedule EXIT
-        self._pending_exit = BreadthTraversalEvent(
-            node, BreadthTraversalState.EXIT_DIR, depth
-        )
+        self._pending_exit = BreadthTraversalEvent(node, BreadthTraversalState.EXIT_DIR, depth)
 
         # Collect children
         if self._max_depth < 0 or depth < self._max_depth:
@@ -136,9 +126,7 @@ class BreadthFirstStrategy(TraversalStrategy[BreadthTraversalEvent]):
                     self._queue.append((child, depth + 1))
                 else:
                     self._pending_files.append(
-                        BreadthTraversalEvent(
-                            child, BreadthTraversalState.FILE, depth + 1
-                        )
+                        BreadthTraversalEvent(child, BreadthTraversalState.FILE, depth + 1)
                     )
 
         return BreadthTraversalEvent(node, BreadthTraversalState.ENTER_DIR, depth)

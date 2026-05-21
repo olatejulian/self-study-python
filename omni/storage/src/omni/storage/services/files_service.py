@@ -1,12 +1,12 @@
-from ..utils.app_types import Id
-from ..schemas.file_metadata_schema import (
-    FileMetadataCreate,
-    FileMetadataUpdate,
-    FileMetadata,
-)
 from ..repositories.implementations.files_metadata_sqlalchemy_repository import (
     FilesMetadataRepository,
 )
+from ..schemas.file_metadata_schema import (
+    FileMetadata,
+    FileMetadataCreate,
+    FileMetadataUpdate,
+)
+from ..utils.app_types import Id
 
 
 class FilesService:

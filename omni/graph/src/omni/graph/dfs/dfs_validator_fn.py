@@ -37,11 +37,9 @@ def validate_depth[T](
 
     if context.depth != expected_depth:
         raise DFSInvariantError(
-            (
-                "invalid DFS depth invariant: "
-                f"expected depth={expected_depth}, "
-                f"received depth={context.depth}"
-            )
+            "invalid DFS depth invariant: "
+            f"expected depth={expected_depth}, "
+            f"received depth={context.depth}"
         )
 
 
@@ -54,7 +52,7 @@ def validate_path[T](
 
     if context.path[-1] is not context.node:
         raise DFSInvariantError(
-            ("DFS path invariant violated: path does not terminate at current node")
+            "DFS path invariant violated: path does not terminate at current node"
         )
 
 
@@ -66,15 +64,13 @@ def validate_parent[T](
         return
 
     if len(context.path) < 2:
-        raise DFSInvariantError(
-            ("DFS parent invariant violated: parent exists but path length < 2")
-        )
+        raise DFSInvariantError("DFS parent invariant violated: parent exists but path length < 2")
 
     expected_parent = context.path[-2]
 
     if expected_parent is not context.parent:
         raise DFSInvariantError(
-            ("DFS parent invariant violated: parent does not match previous path node")
+            "DFS parent invariant violated: parent does not match previous path node"
         )
 
 
@@ -86,11 +82,9 @@ def validate_root[T](
 
     if is_root:
         if context.depth != 0:
-            raise DFSInvariantError(
-                ("DFS root invariant violated: root depth must be 0")
-            )
+            raise DFSInvariantError("DFS root invariant violated: root depth must be 0")
 
         if len(context.path) != 1:
             raise DFSInvariantError(
-                ("DFS root invariant violated: root path must contain only root node")
+                "DFS root invariant violated: root path must contain only root node"
             )

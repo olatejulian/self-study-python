@@ -1,6 +1,7 @@
+import uuid
+
 import pendulum
 import pytest
-import uuid
 
 from omni.seedwork.src.omni.seedwork.mixin.entity_props import EntityPropsMixin
 

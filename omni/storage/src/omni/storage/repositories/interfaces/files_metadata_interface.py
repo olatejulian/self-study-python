@@ -1,11 +1,11 @@
 from interface import Interface
 
-from ...utils.app_types import Id
 from ...schemas.file_metadata_schema import (
+    FileMetadata,
     FileMetadataCreate,
     FileMetadataUpdate,
-    FileMetadata,
 )
+from ...utils.app_types import Id
 
 
 class IFilesMetadataRepository(Interface):

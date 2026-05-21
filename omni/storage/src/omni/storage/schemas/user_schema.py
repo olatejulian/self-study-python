@@ -1,10 +1,10 @@
-from typing import Optional
 from datetime import datetime
+
 from pydantic import EmailStr, SecretStr
 
+from ..utils.all_fields_optional import AllFieldsOptional
 from ..utils.app_types import Id
 from ..utils.pydantic_base_schema import BaseSchema
-from ..utils.all_fields_optional import AllFieldsOptional
 
 
 class UserSchema(BaseSchema):
@@ -18,7 +18,7 @@ class UserCreate(UserSchema):
 
 
 class UserUpdate(UserSchema, metaclass=AllFieldsOptional):
-    updated_at: Optional[datetime] = datetime.now()
+    updated_at: datetime | None = datetime.now()
 
 
 class User(UserSchema):

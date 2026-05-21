@@ -1,5 +1,5 @@
+from collections.abc import Callable
 from enum import StrEnum
-from typing import Callable
 
 from .abc_rendering import Renderer
 from .impl_rendering import RichTreeRenderer

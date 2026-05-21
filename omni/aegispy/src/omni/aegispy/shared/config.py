@@ -25,6 +25,4 @@ class AuthConfig(Config):
 
         self.secret_key = self._get("AUTH_SECRET_KEY")
         self.algorithm = self._get("AUTH_ALGORITHM")
-        self.access_token_expire_minutes = int(
-            self._get("AUTH_ACCESS_TOKEN_EXPIRE_MINUTES")
-        )
+        self.access_token_expire_minutes = int(self._get("AUTH_ACCESS_TOKEN_EXPIRE_MINUTES"))

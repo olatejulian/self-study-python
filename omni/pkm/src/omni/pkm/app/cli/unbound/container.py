@@ -1,12 +1,11 @@
 import sqlite3
 
-from lagom import Container
-
 from automaton.modules.pokemon import (
     PokeDex,
     PokemonService,
     SqliteUnboundNationalPokeDex,
 )
+from lagom import Container
 
 from ..commands import AddPokemonsFromCsv, GetPokemons
 from ..config import PokedexTableConfig
@@ -25,8 +24,6 @@ def build_unbound_container(container: Container | None = None) -> Container:
 
     container[PokedexTableConfig] = UnboundTableConfig()
 
-    container[GetPokemons] = lambda c: GetPokemons(
-        c[PokemonService], c[PokedexTableConfig]
-    )
+    container[GetPokemons] = lambda c: GetPokemons(c[PokemonService], c[PokedexTableConfig])
 
     return container

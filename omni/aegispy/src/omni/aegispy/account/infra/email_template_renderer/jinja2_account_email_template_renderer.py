@@ -15,15 +15,11 @@ class EmailTemplateRendererConfig(Config):
         super().__init__()
 
         self.template_dir = self._get("EMAIL_TEMPLATE_DIR")
-        self.email_verification_html_template = self._get(
-            "EMAIL_VERIFICATION_HTML_TEMPLATE"
-        )
+        self.email_verification_html_template = self._get("EMAIL_VERIFICATION_HTML_TEMPLATE")
         self.email_verification_plaintext_template = self._get(
             "EMAIL_VERIFICATION_PLAINTEXT_TEMPLATE"
         )
-        self.password_reset_html_template = self._get(
-            "EMAIL_PASSWORD_RESET_HTML_TEMPLATE"
-        )
+        self.password_reset_html_template = self._get("EMAIL_PASSWORD_RESET_HTML_TEMPLATE")
         self.password_reset_plaintext_template = self._get(
             "EMAIL_PASSWORD_RESET_PLAINTEXT_TEMPLATE"
         )

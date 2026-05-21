@@ -2,11 +2,12 @@
 Script para treino dos modelos de aprendizagem de máquina estatístico
 """
 
-import os
 import json
+import os
+
 import joblib
-from pandas import DataFrame
 from numpyencoder import NumpyEncoder
+from pandas import DataFrame
 from sklearn.model_selection import GridSearchCV, RepeatedStratifiedKFold
 
 # TODO: Desenvolvimento de uma função que rode apenas um estimador mas que passe por todo o processo de otimização e de persistência com os devidos tratamentos de path, tipagem preparados para multithreading process.

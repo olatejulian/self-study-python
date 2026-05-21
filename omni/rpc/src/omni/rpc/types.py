@@ -1,4 +1,5 @@
-from typing import Any, Callable, TypedDict, TypeVar
+from collections.abc import Callable
+from typing import Any, TypedDict, TypeVar
 
 Handler = Callable[..., Any]
 

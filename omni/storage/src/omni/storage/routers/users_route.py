@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 
+from ..schemas.user_schema import User, UserCreate, UserUpdate
+from ..services.users_service import UserService
 from ..utils.app_types import Id
 from ..utils.pagination import Pagination
-from ..services.users_service import UserService
-from ..schemas.user_schema import UserCreate, UserUpdate, User
 
 router = APIRouter(prefix="/users", tags=["User Routes"])
 

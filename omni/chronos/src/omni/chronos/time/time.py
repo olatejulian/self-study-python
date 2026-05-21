@@ -58,15 +58,11 @@ class Time:
 
     @property
     def minutes(self) -> int:
-        return int(
-            self.__milliseconds // self.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR
-        )
+        return int(self.__milliseconds // self.__MINUTE_TO_MILLISECOND_CONVERSION_FACTOR)
 
     @property
     def seconds(self) -> int:
-        return int(
-            self.__milliseconds // self.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR
-        )
+        return int(self.__milliseconds // self.__SECOND_TO_MILLISECOND_CONVERSION_FACTOR)
 
     @property
     def milliseconds(self) -> int:

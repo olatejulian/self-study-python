@@ -7,9 +7,11 @@ https://camillovisini.com/article/abstracting-FastAPI-services/
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from omni.storage.src.omni.storage.routers import users_route
+from omni.storage.src.omni.storage.repositories.implementations.sessions.sqlalchemy_session import (
+    engine,
+)
 from omni.storage.src.omni.storage.repositories.models.user_sqlalchemy_model import Base
-from omni.storage.src.omni.storage.repositories.implementations.sessions.sqlalchemy_session import engine
+from omni.storage.src.omni.storage.routers import users_route
 
 app = FastAPI()
 

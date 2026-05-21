@@ -68,6 +68,4 @@ class VerificationCode(ValueObject[str]):
 
     @classmethod
     def generate(cls) -> "VerificationCode":
-        return VerificationCode(
-            cls.__stringify(randint(0, int("9" * cls.__code_length)))
-        )
+        return VerificationCode(cls.__stringify(randint(0, int("9" * cls.__code_length))))

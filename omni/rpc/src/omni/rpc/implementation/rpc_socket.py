@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import socket
+from collections.abc import Callable
 from multiprocessing import Process
-from typing import Callable
 
 from ..abstracts import RpcClientSocket, RpcSocket
 from ..value_objects import Host, Port

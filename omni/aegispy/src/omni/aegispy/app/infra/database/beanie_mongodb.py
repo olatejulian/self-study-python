@@ -4,9 +4,9 @@ from motor.motor_asyncio import (
     AsyncIOMotorClientSession,
     AsyncIOMotorDatabase,
 )
+from src.shared import Config
 
 from omni.aegispy.src.omni.aegispy.account import BeanieAccountModel
-from src.shared import Config
 
 
 class BeanieMongoDatabaseConfig(Config):

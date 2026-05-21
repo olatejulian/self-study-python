@@ -1,5 +1,5 @@
+from collections.abc import Callable
 from enum import StrEnum
-from typing import Callable
 
 from .abc_sorting import SortStrategy
 from .impl_sorting import (

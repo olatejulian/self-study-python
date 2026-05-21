@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, MinMaxScaler, MaxAbsScaler
+from sklearn.preprocessing import MaxAbsScaler, MinMaxScaler, StandardScaler
 
 
 class Preprocessing:
@@ -15,9 +15,7 @@ class Preprocessing:
 
     @staticmethod
     def scaler(x, method):
-        scaler = dict(
-            std=StandardScaler(), minmax=MinMaxScaler(), maxabs=MaxAbsScaler()
-        )
+        scaler = dict(std=StandardScaler(), minmax=MinMaxScaler(), maxabs=MaxAbsScaler())
 
         x_scaled = pd.DataFrame(data=scaler[method].fit_transform(x), columns=x.columns)
 
@@ -28,9 +26,7 @@ class Preprocessing:
         y = df[target_feature]
         x = df.drop(target_feature, axis=1)
 
-        x_train, x_test, y_train, y_test = train_test_split(
-            x, y, stratify=y, random_state=cls.SEED
-        )
+        x_train, x_test, y_train, y_test = train_test_split(x, y, stratify=y, random_state=cls.SEED)
 
         x_train.reset_index(inplace=True)
         x_test.reset_index(inplace=True)

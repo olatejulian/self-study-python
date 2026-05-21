@@ -25,9 +25,7 @@ class AccountContainer(containers.DeclarativeContainer):
     session = providers.Dependency()
 
     # config
-    verification_email_sender_config = providers.Singleton(
-        VerificationEmailSenderConfig
-    )
+    verification_email_sender_config = providers.Singleton(VerificationEmailSenderConfig)
 
     email_template_renderer_config = providers.Singleton(EmailTemplateRendererConfig)
 

@@ -1,9 +1,7 @@
-from typing import List
-
+from ..repositories.implementations.user_sqlalchemy_repository import UserRepository
+from ..schemas.user_schema import User, UserCreate, UserUpdate
 from ..utils.app_types import Id
 from ..utils.pagination import Pagination
-from ..schemas.user_schema import UserCreate, UserUpdate, User
-from ..repositories.implementations.user_sqlalchemy_repository import UserRepository
 
 
 class UserService:
@@ -22,7 +20,7 @@ class UserService:
     def delete(self, id: Id) -> None:
         self.repository.delete(id)
 
-    def read_many(self, pagination: Pagination) -> List[User]:
+    def read_many(self, pagination: Pagination) -> list[User]:
         return self.repository.read_many(pagination)
 
     def count(self) -> int:

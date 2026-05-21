@@ -20,15 +20,9 @@ class EmailContent(ValueObject[str]):
         super().__init__(
             value,
             [
-                ValueValidator(
-                    isinstance(value, str), InvalidEmailContentTypeException()
-                ),
-                ValueValidator(
-                    self.__is_not_empty(value), EmailContentCannotBeEmptyException()
-                ),
-                ValueValidator(
-                    self.__is_not_too_long(value), EmailContentTooLongException()
-                ),
+                ValueValidator(isinstance(value, str), InvalidEmailContentTypeException()),
+                ValueValidator(self.__is_not_empty(value), EmailContentCannotBeEmptyException()),
+                ValueValidator(self.__is_not_too_long(value), EmailContentTooLongException()),
             ],
         )
 

@@ -1,5 +1,4 @@
 from pydantic import EmailError, EmailStr
-
 from src.shared import ValueObject, ValueValidator
 
 
@@ -10,9 +9,7 @@ class InvalidEmailAddressException(Exception):
 class EmailAddress(ValueObject[str]):
     def __init__(self, value: str):
         validators = [
-            ValueValidator(
-                self.is_valid_email_address(value), InvalidEmailAddressException()
-            ),
+            ValueValidator(self.is_valid_email_address(value), InvalidEmailAddressException()),
         ]
 
         super().__init__(value, validators)

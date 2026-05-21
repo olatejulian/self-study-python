@@ -1,7 +1,6 @@
 # pylint: disable=invalid-name,redefined-builtin,too-few-public-methods,too-many-arguments,too-many-instance-attributes
 
 import pendulum
-
 from src.shared import Entity
 
 from .event import AccountCreated
@@ -186,11 +185,7 @@ class Account(Entity):
             not self.password.reset_verification_code
             or not self.password.reset_verification_code_sent_on
             or pendulum.now()
-            .diff(
-                pendulum.from_timestamp(
-                    self.password.reset_verification_code_sent_on.value
-                )
-            )
+            .diff(pendulum.from_timestamp(self.password.reset_verification_code_sent_on.value))
             .in_minutes()
             > AccountPassword.reset_code_expiration_in_minutes
             or self.password.reset_verification_code != reset_code

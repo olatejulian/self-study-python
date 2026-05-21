@@ -1,6 +1,6 @@
 from ...text import Text
-from .pokemon_factory import PokemonFactory
 from .pokedex import PokeDex, Query
+from .pokemon_factory import PokemonFactory
 
 
 class PokemonService:

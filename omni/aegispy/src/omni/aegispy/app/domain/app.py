@@ -4,9 +4,7 @@ from fastapi import APIRouter, FastAPI
 
 
 class App:
-    def __init__(
-        self, container: containers.DeclarativeContainer, routes: list[APIRouter]
-    ):
+    def __init__(self, container: containers.DeclarativeContainer, routes: list[APIRouter]):
         self.container = container
         self.api = FastAPI()
 

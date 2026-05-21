@@ -51,9 +51,7 @@ class AioSmtpAccountEmailSender(AccountEmailSender):
         email_message.add_alternative(html_content.value, subtype="html")
 
         try:
-            async with SMTP(
-                hostname=self.config.smtp_host, port=self.config.smtp_port
-            ) as smtp:
+            async with SMTP(hostname=self.config.smtp_host, port=self.config.smtp_port) as smtp:
                 await smtp.connect()
                 await smtp.login(self.config.username, self.config.password)
 

@@ -1,5 +1,5 @@
+from collections.abc import Callable
 from enum import StrEnum
-from typing import Callable
 
 from .abc_filtering import FilterStrategy
 from .impl_filtering import (

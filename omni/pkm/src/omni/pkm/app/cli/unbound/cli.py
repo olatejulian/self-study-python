@@ -1,8 +1,5 @@
-from typing import Optional
-
-from typer import Typer
-
 from automaton.apps.cli import common
+from typer import Typer
 
 from ..commands import AddPokemonsFromCsv, GetPokemons
 from ..container import build_pokemon_container
@@ -24,9 +21,9 @@ def add_data(path: str, file_format: str = "csv"):
 
 @unbound_cli.command()
 def get(
-    where: Optional[str] = None,
-    order_by: Optional[str] = None,
-    limit: Optional[int] = None,
+    where: str | None = None,
+    order_by: str | None = None,
+    limit: int | None = None,
 ):
     get_pokemons = unbound_container[GetPokemons]
 

@@ -23,9 +23,7 @@ class AuthConfig(Config):
 
         self.secret_key = self._get("AUTH_SECRET_KEY")
         self.algorithm = self._get("AUTH_ALGORITHM")
-        self.access_token_expire_minutes = int(
-            self._get("AUTH_ACCESS_TOKEN_EXPIRE_MINUTES")
-        )
+        self.access_token_expire_minutes = int(self._get("AUTH_ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 
 class JoseAccountAuthenticator(AccountAuthenticator):
@@ -40,9 +38,7 @@ class JoseAccountAuthenticator(AccountAuthenticator):
 
         return jwt.encode(data, self.config.secret_key, algorithm=self.config.algorithm)
 
-    async def authenticate(
-        self, email: EmailAddress, plain_password: str
-    ) -> AccessTokenDto:
+    async def authenticate(self, email: EmailAddress, plain_password: str) -> AccessTokenDto:
         try:
             account = await self.repository.get_by_email(email)
 
@@ -60,9 +56,7 @@ class JoseAccountAuthenticator(AccountAuthenticator):
 
     async def get_current_account(self, token: str) -> Account:
         try:
-            payload = jwt.decode(
-                token, self.config.secret_key, algorithms=[self.config.algorithm]
-            )
+            payload = jwt.decode(token, self.config.secret_key, algorithms=[self.config.algorithm])
 
             if (
                 (sub := payload.get("sub"))

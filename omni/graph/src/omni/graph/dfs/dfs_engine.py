@@ -6,7 +6,6 @@ from .dfs_context import DFSContext
 from .dfs_event import DFSNodeEntered, DFSNodeExited
 from .dfs_generator import DFSGenerator
 from .dfs_validator import DFSValidator
-from .dfs_validator_fn import validate_context
 
 T = TypeVar("T", bound=Node)
 
@@ -51,9 +50,7 @@ class DFSEngine(Generic[T]):
 
             if not isinstance(command, SkipChildren):
                 for child in node:
-                    yield from walk(
-                        child, depth=depth + 1, parent=node, path=(*path, child)
-                    )
+                    yield from walk(child, depth=depth + 1, parent=node, path=(*path, child))
 
             yield DFSNodeExited(context)
 

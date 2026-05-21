@@ -1,9 +1,8 @@
 from datetime import datetime
-from typing import Union, Optional
 
+from ..utils.all_fields_optional import AllFieldsOptional
 from ..utils.app_types import Id
 from ..utils.pydantic_base_schema import BaseSchema
-from ..utils.all_fields_optional import AllFieldsOptional
 
 
 class FileMetadataSchema(BaseSchema):
@@ -12,9 +11,9 @@ class FileMetadataSchema(BaseSchema):
     public: bool
     url_path: str
     user_id: Id
-    expire_at: Optional[Union[datetime, None]]
-    updated_at: Optional[datetime]
-    created_at: Optional[datetime]
+    expire_at: datetime | None | None
+    updated_at: datetime | None
+    created_at: datetime | None
 
 
 class FileMetadataCreate(FileMetadataSchema):

@@ -4,9 +4,10 @@ Links:
 https://variable-scope.com/posts/storing-and-verifying-passwords-with-sqlalchemy
 """
 
-from sqlalchemy import Column, String, Integer, Sequence, DateTime
 from datetime import datetime
+
 from passlib.hash import bcrypt
+from sqlalchemy import Column, DateTime, Integer, Sequence, String
 from sqlalchemy.orm import relationship
 
 from ...utils.sqlalchemy_base_model import SQLBaseModel

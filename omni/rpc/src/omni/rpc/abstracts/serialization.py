@@ -17,13 +17,9 @@ class Decoder(ABC, Generic[Data, EncodedData]):
         raise NotImplementedError
 
 
-class RpcServerSerializer(
-    Encoder[RpcResponse, UTF8Bytes], Decoder[RpcRequest, UTF8Bytes], ABC
-):
+class RpcServerSerializer(Encoder[RpcResponse, UTF8Bytes], Decoder[RpcRequest, UTF8Bytes], ABC):
     pass
 
 
-class RpcClientSerializer(
-    Encoder[RpcRequest, UTF8Bytes], Decoder[RpcResponse, UTF8Bytes], ABC
-):
+class RpcClientSerializer(Encoder[RpcRequest, UTF8Bytes], Decoder[RpcResponse, UTF8Bytes], ABC):
     pass

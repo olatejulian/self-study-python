@@ -48,9 +48,7 @@ class RpcRequest:
         args: list[Any] | tuple[Any] | None = None,
         kwargs: dict[str, Any] | None = None,
     ):
-        self.handler_id, self.args, self.kwargs = self.__validate__(
-            handler_id, args, kwargs
-        )
+        self.handler_id, self.args, self.kwargs = self.__validate__(handler_id, args, kwargs)
 
     @property
     def to_dict(self):

@@ -1,8 +1,7 @@
 import sqlite3
 
-from lagom import Container, Singleton
-
 from automaton.modules import sqlite_util
+from lagom import Container, Singleton
 
 from .config import PokemonCliConfig
 

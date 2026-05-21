@@ -1,14 +1,16 @@
 import asyncio
 
-from omni.aegispy.src.omni.aegispy.app.domain import Event, EventBus, EventDoesNotHaveHandlersException
+from omni.aegispy.src.omni.aegispy.app.domain import (
+    Event,
+    EventBus,
+    EventDoesNotHaveHandlersException,
+)
 
 
 class DefaultEventBus(EventBus):
     async def dispatch(self, event: Event) -> None:
         if handlers := self.handlers.get(type(event), None):
-            tasks = [
-                (asyncio.create_task(handler.handle(event))) for handler in handlers
-            ]
+            tasks = [(asyncio.create_task(handler.handle(event))) for handler in handlers]
 
             await asyncio.gather(*tasks)
 

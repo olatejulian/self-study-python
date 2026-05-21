@@ -1,24 +1,21 @@
 import os
 
 import pandas as pd
-
-from imblearn.over_sampling import SMOTE
-
 from catboost import CatBoostClassifier
-
-from sklearn.svm import SVC  # svm classifier
+from imblearn.over_sampling import SMOTE
 from sklearn.dummy import DummyClassifier  # dummy
-from sklearn.tree import DecisionTreeClassifier  # tree baseds
+from sklearn.ensemble import (
+    AdaBoostClassifier,
+    GradientBoostingClassifier,
+    RandomForestClassifier,
+)  # Ensemble estimators
 from sklearn.linear_model import LogisticRegression  # linear models
 from sklearn.neighbors import (
     KNeighborsClassifier,
     RadiusNeighborsClassifier,
 )  # neighbors based models
-from sklearn.ensemble import (
-    RandomForestClassifier,
-    GradientBoostingClassifier,
-    AdaBoostClassifier,
-)  # Ensemble estimators
+from sklearn.svm import SVC  # svm classifier
+from sklearn.tree import DecisionTreeClassifier  # tree baseds
 
 
 def main():
@@ -55,9 +52,7 @@ if __name__ == "__main__":
 
     SEED = 42
 
-    x_train, x_test, y_train, y_test = PrepareToTrain.make_xy_split(
-        df, "sars_cov_2_exam_result"
-    )
+    x_train, x_test, y_train, y_test = PrepareToTrain.make_xy_split(df, "sars_cov_2_exam_result")
 
     x_train.to_csv("../dados/output/x_train.csv", index=False)
     x_test.to_csv("../dados/output/x_test.csv", index=False)

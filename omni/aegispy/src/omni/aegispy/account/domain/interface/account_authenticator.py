@@ -12,9 +12,7 @@ class AccessTokenDto:
 
 class AccountAuthenticator(ABC):
     @abstractmethod
-    async def authenticate(
-        self, email: EmailAddress, plain_password: str
-    ) -> AccessTokenDto:
+    async def authenticate(self, email: EmailAddress, plain_password: str) -> AccessTokenDto:
         raise NotImplementedError
 
     @abstractmethod

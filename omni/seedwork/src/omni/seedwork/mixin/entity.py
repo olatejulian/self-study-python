@@ -1,9 +1,8 @@
-from typing import Generic, TypeVar, Any
+from typing import Any, Generic, TypeVar
 
-from omni.seedwork.src.omni.seedwork.util import NotificationManager, EventManager
 from omni.seedwork.src.omni.seedwork.abc import AbstractEntity
-
 from omni.seedwork.src.omni.seedwork.mixin.entity_props import EntityPropsMixin
+from omni.seedwork.src.omni.seedwork.util import EventManager, NotificationManager
 
 Props = TypeVar("Props", bound=EntityPropsMixin)
 

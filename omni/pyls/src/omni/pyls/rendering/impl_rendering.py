@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Union
+from typing import Union
 
 from rich.console import Console
 from rich.tree import Tree
@@ -25,7 +25,7 @@ class RichTreeRenderer:
     def __init__(self, *, clear_console: bool = False) -> None:
         self.console = Console()
         self._stack: list[Tree] = []
-        self._root_tree: Optional[Tree] = None
+        self._root_tree: Tree | None = None
         self._clear = clear_console
 
     def render(self, event: TraversalEvent) -> None:
@@ -36,10 +36,7 @@ class RichTreeRenderer:
         state = event.state
 
         # Directory entered
-        if (
-            state is DepthTraversalState.ENTER_DIR
-            or state is BreadthTraversalState.ENTER_DIR
-        ):
+        if state is DepthTraversalState.ENTER_DIR or state is BreadthTraversalState.ENTER_DIR:
             self._enter_dir(event.path, event.depth)
 
         # File
@@ -47,10 +44,7 @@ class RichTreeRenderer:
             self._file(event.path, event.depth)
 
         # Directory exit
-        elif (
-            state is DepthTraversalState.EXIT_DIR
-            or state is BreadthTraversalState.EXIT_DIR
-        ):
+        elif state is DepthTraversalState.EXIT_DIR or state is BreadthTraversalState.EXIT_DIR:
             self._exit_dir()
 
     def _enter_dir(self, path: Path, depth: int) -> None:

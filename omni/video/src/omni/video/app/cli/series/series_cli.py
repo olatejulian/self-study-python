@@ -1,8 +1,8 @@
 from pathlib import Path
-from typing import Optional
 
 from rich.console import Console
 from typer import Typer
+
 from omni.video.src.omni.video.modules import Series, SeriesEpisodeInfoDict
 
 seriesCli = Typer(name="series")
@@ -11,9 +11,9 @@ seriesCli = Typer(name="series")
 @seriesCli.command()
 def rename_episodes(
     series_path: str,
-    episode_pattern: Optional[str] = None,
-    new_episode_pattern: Optional[str] = None,
-    series_name: Optional[str] = None,
+    episode_pattern: str | None = None,
+    new_episode_pattern: str | None = None,
+    series_name: str | None = None,
 ):
     console = Console()
 

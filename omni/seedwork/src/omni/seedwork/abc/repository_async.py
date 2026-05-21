@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 from uuid import UUID
 
-
 E = TypeVar("E")
 
 

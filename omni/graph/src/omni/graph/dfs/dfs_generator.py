@@ -1,4 +1,5 @@
-from typing import Generator, TypeAlias, TypeVar
+from collections.abc import Generator
+from typing import TypeAlias, TypeVar
 
 from .dfs_command import DFSCommand
 from .dfs_event import DFSEvent

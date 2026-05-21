@@ -1,4 +1,5 @@
 from typer import Typer
+
 from omni.video.src.omni.video.modules import SubRip
 
 subtitleCli = Typer(name="subtitle")

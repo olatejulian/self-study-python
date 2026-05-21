@@ -1,5 +1,5 @@
+from collections.abc import Iterable, Iterator
 from pathlib import Path
-from typing import Iterable, Iterator
 
 from omni.pyls.src.omni.pyls.filtering.abc_filtering import FilterStrategy
 from omni.pyls.src.omni.pyls.sorting.abc_sorting import SortStrategy

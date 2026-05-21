@@ -39,11 +39,9 @@ class DFSDepthValidator[T]:
 
         if context.depth != expected_depth:
             raise DFSInvariantError(
-                (
-                    "invalid DFS depth invariant: "
-                    f"expected depth={expected_depth}, "
-                    f"received depth={context.depth}"
-                )
+                "invalid DFS depth invariant: "
+                f"expected depth={expected_depth}, "
+                f"received depth={context.depth}"
             )
 
 
@@ -58,7 +56,7 @@ class DFSPathValidator[T]:
 
         if context.path[-1] is not context.node:
             raise DFSInvariantError(
-                ("DFS path invariant violated: path does not terminate at current node")
+                "DFS path invariant violated: path does not terminate at current node"
             )
 
 
@@ -73,17 +71,14 @@ class DFSParentValidator[T]:
 
         if len(context.path) < 2:
             raise DFSInvariantError(
-                ("DFS parent invariant violated: parent exists but path length < 2")
+                "DFS parent invariant violated: parent exists but path length < 2"
             )
 
         expected_parent = context.path[-2]
 
         if expected_parent is not context.parent:
             raise DFSInvariantError(
-                (
-                    "DFS parent invariant violated: "
-                    "parent does not match previous path node"
-                )
+                "DFS parent invariant violated: parent does not match previous path node"
             )
 
 
@@ -99,13 +94,11 @@ class DFSRootValidator[T]:
             return
 
         if context.depth != 0:
-            raise DFSInvariantError(
-                ("DFS root invariant violated: root depth must be 0")
-            )
+            raise DFSInvariantError("DFS root invariant violated: root depth must be 0")
 
         if len(context.path) != 1:
             raise DFSInvariantError(
-                ("DFS root invariant violated: root path must contain only root node")
+                "DFS root invariant violated: root path must contain only root node"
             )
 
 
@@ -120,10 +113,7 @@ class DFSDiscoveryValidator[T]:
 
         if context.discovery_index <= self._last_index:
             raise DFSInvariantError(
-                (
-                    "DFS discovery invariant violated: "
-                    "discovery index must strictly increase"
-                )
+                "DFS discovery invariant violated: discovery index must strictly increase"
             )
 
         self._last_index = context.discovery_index

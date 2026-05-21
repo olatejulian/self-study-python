@@ -1,4 +1,8 @@
-from omni.aegispy.src.omni.aegispy.account.domain import AccessTokenDto, AccountAuthenticator, EmailAddress
+from omni.aegispy.src.omni.aegispy.account.domain import (
+    AccessTokenDto,
+    AccountAuthenticator,
+    EmailAddress,
+)
 from omni.aegispy.src.omni.aegispy.shared import Query, QueryHandler, QueryResponse
 
 

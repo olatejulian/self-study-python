@@ -1,13 +1,11 @@
-from typing import List
 from interface import implements
-from sqlalchemy import select, update, delete, func
+from sqlalchemy import delete, func, select, update
 
+from ...schemas.user_schema import User, UserCreate, UserUpdate
 from ...utils.app_types import Id
 from ...utils.pagination import Pagination
-from ...schemas.user_schema import UserCreate, UserUpdate, User
-
-from ..models.user_sqlalchemy_model import UserModel
 from ..interfaces.users_interface import IUserRepository
+from ..models.user_sqlalchemy_model import UserModel
 from .sessions.sqlalchemy_session import SQLAlchemySession
 
 
@@ -36,16 +34,14 @@ class UserRepository(implements(IUserRepository)):
     def update(self, id: int, user_update: UserUpdate) -> None:
         with self.session.begin():
             self.session.execute(
-                update(UserModel)
-                .where(UserModel.id == id)
-                .values(**user_update._fields())
+                update(UserModel).where(UserModel.id == id).values(**user_update._fields())
             )
 
     def delete(self, id: int) -> None:
         with self.session.begin():
             self.session.execute(delete(UserModel).where(UserModel.id == id))
 
-    def read_many(self, pagination: Pagination) -> List[User]:
+    def read_many(self, pagination: Pagination) -> list[User]:
         with self.session.begin():
             return self.session.execute(
                 select(UserModel)

@@ -1,6 +1,6 @@
 import re
+from collections.abc import Callable, Iterator
 from pathlib import Path
-from typing import Callable, Iterator
 
 from ._types import SeriesEpisodeInfoDict
 
@@ -10,9 +10,7 @@ class Series:
 
     __default_zero_padding_length = 2
 
-    def __init__(
-        self, series_name: str, episode_pattern: str, new_episode_pattern: str
-    ):
+    def __init__(self, series_name: str, episode_pattern: str, new_episode_pattern: str):
         self.__series_name = series_name
         self.__episode_pattern = episode_pattern
         self.__new_episode_pattern = new_episode_pattern
@@ -41,9 +39,7 @@ class Series:
                 if callback:
                     callback(episode_path, episode_info)
 
-                new_episode_path = self.__rename_episode_file_name(
-                    episode_path, episode_info
-                )
+                new_episode_path = self.__rename_episode_file_name(episode_path, episode_info)
 
                 yield new_episode_path
 

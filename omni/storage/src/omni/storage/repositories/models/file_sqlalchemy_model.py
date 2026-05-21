@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Integer, DateTime, Sequence, ForeignKey
 from datetime import datetime
+
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, Sequence, String
 
 from ...utils.sqlalchemy_base_model import SQLBaseModel
 
@@ -7,9 +8,7 @@ from ...utils.sqlalchemy_base_model import SQLBaseModel
 class FilesMetadataModel(SQLBaseModel):
     __tablename__ = "files_metadata"
 
-    id = Column(
-        Integer, Sequence("file_metadata_seq"), primary_key=True, nullable=False
-    )
+    id = Column(Integer, Sequence("file_metadata_seq"), primary_key=True, nullable=False)
     name = Column(String, unique=False, nullable=False)
     path = Column(String, unique=True, nullable=False)
     url_path = Column(String, unique=True, nullable=False)
@@ -18,9 +17,7 @@ class FilesMetadataModel(SQLBaseModel):
     updated_at = Column(DateTime, default=datetime.now(), nullable=False)
     created_at = Column(DateTime, default=datetime.now(), nullable=False)
 
-    def __init__(
-        self, name, path, url_path, client_id, expire_at, updated_at, create_at
-    ):
+    def __init__(self, name, path, url_path, client_id, expire_at, updated_at, create_at):
         self.name = name
         self.path = path
         self.url_path = url_path

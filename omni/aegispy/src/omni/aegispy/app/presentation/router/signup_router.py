@@ -2,9 +2,20 @@ from dependency_injector.wiring import Provide, inject
 from fastapi import APIRouter, BackgroundTasks, Depends
 from pydantic import BaseModel, EmailStr
 
-from omni.aegispy.src.omni.aegispy.account import Account, CreateAccount, EmailAddress, Name, Password
+from omni.aegispy.src.omni.aegispy.account import (
+    Account,
+    CreateAccount,
+    EmailAddress,
+    Name,
+    Password,
+)
 from omni.aegispy.src.omni.aegispy.app.app_container import AppContainer
-from omni.aegispy.src.omni.aegispy.app.domain import APIResponse, CommandBus, EventBus, SchemaExtraConfig
+from omni.aegispy.src.omni.aegispy.app.domain import (
+    APIResponse,
+    CommandBus,
+    EventBus,
+    SchemaExtraConfig,
+)
 
 
 class SignupRequest(BaseModel):
@@ -48,9 +59,7 @@ signupRouter = APIRouter(tags=["Public", "Signup"])
 async def signup(
     request_body: SignupRequest,
     background_tasks: BackgroundTasks,
-    command_bus: CommandBus[CreateAccount, Account] = Depends(
-        Provide[AppContainer.command_bus]
-    ),
+    command_bus: CommandBus[CreateAccount, Account] = Depends(Provide[AppContainer.command_bus]),
     event_bus: EventBus = Depends(Provide[AppContainer.event_bus]),
 ):
     command = CreateAccount(

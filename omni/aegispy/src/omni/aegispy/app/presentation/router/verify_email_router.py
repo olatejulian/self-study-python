@@ -36,9 +36,7 @@ class ResendVerificationEmailResponse(APIResponse[dict]):
         )
 
 
-@verifyEmailRouter.post(
-    "/verify", response_model=ResendVerificationEmailResponse, status_code=202
-)
+@verifyEmailRouter.post("/verify", response_model=ResendVerificationEmailResponse, status_code=202)
 @inject
 async def resend_verification_email(
     email: ResendVerificationEmailRequest,
@@ -74,9 +72,7 @@ class VerifyEmailResponse(APIResponse[dict]):
 async def verify_email(
     email: str,
     token: str,
-    command_bus: CommandBus[VerifyAccountEmail, None] = Depends(
-        Provide[AppContainer.command_bus]
-    ),
+    command_bus: CommandBus[VerifyAccountEmail, None] = Depends(Provide[AppContainer.command_bus]),
 ) -> VerifyEmailResponse:
     await command_bus.dispatch(
         VerifyAccountEmail(email=EmailAddress(email), token=VerificationCode(token))

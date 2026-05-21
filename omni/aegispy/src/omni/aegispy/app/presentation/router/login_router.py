@@ -34,9 +34,7 @@ async def login(
     form: OAuth2PasswordRequestForm = Depends(),
     query_bus: QueryBus[AccessTokenDto] = Depends(Provide[AppContainer.query_bus]),
 ):
-    response = await query_bus.dispatch(
-        GetAccessToken(EmailAddress(form.username), form.password)
-    )
+    response = await query_bus.dispatch(GetAccessToken(EmailAddress(form.username), form.password))
 
     return LoginResponse(
         status_code=200,

@@ -64,20 +64,14 @@ class BeanieAccountRepository(AccountRepository):
                 if model.email_verification_code_sent_on
                 else None,
                 verified=model.email_verified,
-                verified_on=Time(model.email_verified_on)
-                if model.email_verified_on
-                else None,
+                verified_on=Time(model.email_verified_on) if model.email_verified_on else None,
             ),
             password=AccountPassword(
                 password=Password(model.password, hashed=True),
-                reset_verification_code=VerificationCode(
-                    model.password_reset_verification_code
-                )
+                reset_verification_code=VerificationCode(model.password_reset_verification_code)
                 if model.password_reset_verification_code
                 else None,
-                reset_verification_code_sent_on=Time(
-                    model.password_reset_verification_code_sent_on
-                )
+                reset_verification_code_sent_on=Time(model.password_reset_verification_code_sent_on)
                 if model.password_reset_verification_code_sent_on
                 else None,
             ),
@@ -117,9 +111,7 @@ class BeanieAccountRepository(AccountRepository):
         )
 
     async def __get_model_by(self, *expressions: bool) -> BeanieAccountModel:
-        if model := await BeanieAccountModel.find_one(
-            *expressions, session=self.session
-        ):
+        if model := await BeanieAccountModel.find_one(*expressions, session=self.session):
             return model
 
         raise AccountNotFoundException()
@@ -134,16 +126,12 @@ class BeanieAccountRepository(AccountRepository):
             raise DuplicateIdOrEmailException(*exc.args) from exc
 
     async def get_by_id(self, account_id: Id) -> Account:
-        model = await self.__get_model_by(
-            BeanieAccountModel.id == UUID(account_id.value)
-        )
+        model = await self.__get_model_by(BeanieAccountModel.id == UUID(account_id.value))
 
         return self._to_domain(model)
 
     async def get_by_email(self, email: EmailAddress) -> Account:
-        model = await self.__get_model_by(
-            BeanieAccountModel.email_address == email.value
-        )
+        model = await self.__get_model_by(BeanieAccountModel.email_address == email.value)
 
         return self._to_domain(model)
 
@@ -152,8 +140,6 @@ class BeanieAccountRepository(AccountRepository):
 
         account_to_model = self._to_model(account)
 
-        model_to_update = await self.__get_model_by(
-            BeanieAccountModel.id == UUID(account_id.value)
-        )
+        model_to_update = await self.__get_model_by(BeanieAccountModel.id == UUID(account_id.value))
 
         await model_to_update.update({"$set": account_to_model.dict(exclude={"id"})})
