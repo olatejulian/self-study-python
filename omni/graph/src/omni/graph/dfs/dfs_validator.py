@@ -22,7 +22,7 @@ from .dfs_invariant import DFSInvariantError
 T = TypeVar("T")
 
 
-class DFSContextValidator(Protocol[T]):
+class DFSContextValidator[T](Protocol):
     def validate(
         self,
         context: DFSContext[T],
