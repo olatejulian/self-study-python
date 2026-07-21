@@ -1,9 +1,8 @@
 from pathlib import Path
 
 import typer
-
-from omni.mdpack.src.omni.mdpack.ignore import GitIgnorePatterns
-from omni.mdpack.src.omni.mdpack.markdown_package_builder import MarkdownPackageBuilder
+from omni.mdpack.ignore import GitIgnorePatterns
+from omni.mdpack.markdown_package_builder import MarkdownPackageBuilder
 
 
 def cli(
